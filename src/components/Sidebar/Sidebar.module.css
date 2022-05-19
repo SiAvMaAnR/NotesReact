@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.page {
+    display: flex;
+}
+
+.page .sidebar {
+    color: white;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background-color: #11101d;
+    flex: 0 0 40px;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    min-width: 60px;
+}
+
+.page .sidebar.active {
+    flex: 1 0 230px;
+    transition: all 0.5s ease;
+}
+
+.page .sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: center;
+
+}
+
+.page .sidebar.active .sidebar-header {
+    justify-content: space-between;
+    padding: 0 8%;
+
+}
+
+.page .sidebar .sidebar-header .sidebar-brand {
+    font-size: 24px;
+    display: none;
+    cursor: pointer;
+
+}
+
+.page .sidebar.active .sidebar-header .sidebar-brand {
+    display: block;
+}
+
+.page .sidebar .sidebar-header .sidebar-btn {
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.page .sidebar .sidebar-header .sidebar-btn > i{
+    text-align: center;
+
+}
+
+.page .sidebar.active .sidebar-header .sidebar-btn {
+}
+
+.page .sidebar .sidebar-content {
+}
+
+.page .sidebar.active .sidebar-content {
+}
+
+.page .sidebar .sidebar-account {
+}
+
+.page .sidebar.active .sidebar-account {
+}
+
+.page .page-content {
+}
