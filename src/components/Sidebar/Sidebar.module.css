@@ -72,6 +72,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: all 0.7s ease;
 }
 
 .sidebar .sidebar-header .sidebar-btn:hover {
@@ -87,9 +88,9 @@
     transition: all 0.5s ease;
 }
 
-.sidebar.active .sidebar-header .sidebar-btn:hover {
-    transform: rotate(180deg);
-    transition: all 0.5s ease;
+.sidebar .sidebar-header .sidebar-btn:hover {
+    transform: scale(1.4);
+    transition: all 0.7s ease;
 }
 
 .sidebar .sidebar-content {
