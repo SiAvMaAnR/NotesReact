@@ -29,38 +29,40 @@ const Sidebar = (props) => {
                 </div>
 
                 <div className={styles["sidebar-content"]}>
-                    <Link to="" className={styles["sb-content-link"]}>
-                        <div className={styles["sb-content-element"]}>
+                    <div className={styles["sb-content-element"]}>
+                        <div className={styles["sb-content-btn"]}>
                             <div className={styles["icon"]}>
-                                <i className="bx bx-envelope-open"></i>
+                                <i className="bx bx-search-alt"></i>
                             </div>
-                            <div className={styles["title"]}>###1###</div>
+                            <div className={styles["search"]}>
+                                <input type="text" placeholder="Search..."/>
+                            </div>
                         </div>
-                    </Link>
-                    <Link to="" className={styles["sb-content-link"]}>
-                        <div className={styles["sb-content-element"]}>
+                    </div>
+                    <div className={styles["sb-content-element"]}>
+                        <Link to="" className={styles["sb-content-link"]}>
                             <div className={styles["icon"]}>
-                                <i className="bx bx-envelope-open"></i>
+                                <i className="bx bx-task"></i>
                             </div>
-                            <div className={styles["title"]}>###2###</div>
-                        </div>
-                    </Link>
-                    <Link to="" className={styles["sb-content-link"]}>
-                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["title"]}>Tasks</div>
+                        </Link>
+                    </div>
+                    <div className={styles["sb-content-element"]}>
+                        <Link to="" className={styles["sb-content-link"]}>
                             <div className={styles["icon"]}>
-                                <i className="bx bx-envelope-open"></i>
+                                <i className="bx bx-heart"></i>
                             </div>
-                            <div className={styles["title"]}>###3###</div>
-                        </div>
-                    </Link>
-                    <Link to="" className={styles["sb-content-link"]}>
-                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["title"]}>Favorites</div>
+                        </Link>
+                    </div>
+                    <div className={styles["sb-content-element"]}>
+                        <Link to="" className={styles["sb-content-link"]}>
                             <div className={styles["icon"]}>
-                                <i className="bx bx-envelope-open"></i>
+                                <i className="bx bx-bell"></i>
                             </div>
-                            <div className={styles["title"]}>###4###</div>
-                        </div>
-                    </Link>
+                            <div className={styles["title"]}>Notification</div>
+                        </Link>
+                    </div>
                 </div>
 
                 <div className={styles["sidebar-account"]}>Account</div>
