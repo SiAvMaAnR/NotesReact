@@ -35,7 +35,7 @@ const Sidebar = (props) => {
                                 <i className="bx bx-search-alt"></i>
                             </div>
                             <div className={styles["search"]}>
-                                <input type="text" placeholder="Search..."/>
+                                <input type="text" placeholder="Search..." />
                             </div>
                         </div>
                     </div>
@@ -63,9 +63,33 @@ const Sidebar = (props) => {
                             <div className={styles["title"]}>Notification</div>
                         </Link>
                     </div>
+                    <div className={styles["sb-content-element"]}>
+                        <Link to="" className={styles["sb-content-link"]}>
+                            <div className={styles["icon"]}>
+                                <i className="bx bx-cog"></i>
+                            </div>
+                            <div className={styles["title"]}>Settings</div>
+                        </Link>
+                    </div>
                 </div>
 
-                <div className={styles["sidebar-account"]}>Account</div>
+                <div className={styles["sidebar-account"]}>
+                    <div className={styles["person"]}>
+                        <div className={styles["image"]}>
+                            <img
+                                src="https://images.pexels.com/photos/4553036/pexels-photo-4553036.jpeg?cs=srgb&dl=pexels-roman-odintsov-4553036.jpg&fm=jpg"
+                                alt="person"
+                            />
+                        </div>
+                        <div className={styles["info"]}>
+                            <div className={styles["name"]}>Samarkin Ivan</div>
+                            <div className={styles["status"]}>Online</div>
+                        </div>
+                    </div>
+                    <div className={styles["logout"]}>
+                        <i className="bx bx-log-out-circle"></i>
+                    </div>
+                </div>
             </div>
 
             <div className={styles["page-content"]}>{props.children}</div>

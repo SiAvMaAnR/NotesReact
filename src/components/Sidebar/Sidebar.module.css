@@ -44,6 +44,7 @@
     font-size: 22px;
     display: none;
     cursor: pointer;
+    user-select: none;
 }
 
 .sidebar.active .sidebar-header .sidebar-brand {
@@ -71,7 +72,6 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 .sidebar .sidebar-header .sidebar-btn:hover {
@@ -84,6 +84,10 @@
 }
 
 .sidebar.active .sidebar-header .sidebar-btn {
+    transition: all 0.5s ease;
+}
+
+.sidebar.active .sidebar-header .sidebar-btn:hover {
     transform: rotate(180deg);
     transition: all 0.5s ease;
 }
@@ -96,9 +100,6 @@
     justify-content: stretch;
     overflow-y: auto;
     font-family: "Poppins", sans-serif;
-}
-
-.sidebar.active .sidebar-content {
 }
 
 .sidebar .sidebar-content::-webkit-scrollbar {
@@ -123,7 +124,13 @@
     color: rgb(219, 219, 219);
     text-decoration: none;
     flex-grow: 1;
-    border-radius: 10px;
+    border-radius: 8px;
+}
+
+.sidebar.active .sidebar-content .sb-content-element .sb-content-link,
+.sidebar.active .sidebar-content .sb-content-element .sb-content-btn {
+    transition: all 0.5s ease;
+    padding: 0 10px;
 }
 
 .sidebar .sidebar-content .sb-content-element .sb-content-btn {
@@ -133,11 +140,9 @@
 
 .sidebar .sidebar-content .sb-content-element .sb-content-link:hover,
 .sidebar .sidebar-content .sb-content-element .sb-content-btn:hover {
-    background: white;
+    transition: all 0.5s ease;
+    background: rgb(219, 219, 219);
     color: black;
-}
-
-.sidebar.active .sidebar-content .sb-content-element .sb-content-link {
 }
 
 .sidebar .sidebar-content .sb-content-element .sb-content-link .title,
@@ -166,14 +171,13 @@
 
 .sidebar .sidebar-content .sb-content-element .sb-content-btn .search input {
     height: 30px;
-    width: 150px;
+    width: 140px;
     border-radius: 5px;
     background: transparent;
-    font-size: 20px;
+    font-size: 18px;
     border: transparent;
     padding: 2px 5px;
-    color:rgb(219, 219, 219);
-
+    color: rgb(219, 219, 219);
 }
 
 .sidebar .sidebar-content .sb-content-element .sb-content-btn .search:hover,
@@ -183,18 +187,93 @@
 
 .sidebar .sidebar-content .sb-content-element .sb-content-link .icon,
 .sidebar .sidebar-content .sb-content-element .sb-content-btn .icon {
+    display: flex;
+    justify-content: center;
     padding: 8px 8px;
     font-size: 24px;
+    transition: all 1.0s ease;
 }
 
-.sidebar.active .sidebar-content .sb-content-element .sb-content-link .icon {
+.sidebar .sidebar-content .sb-content-element:hover .sb-content-link .icon,
+.sidebar .sidebar-content .sb-content-element:hover .sb-content-btn .icon {
+    transform: rotate(360deg);
+    transition: all 0.5s ease;
 }
 
 .sidebar .sidebar-account {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex: 0 0 50px;
+    min-height: 50px;
+    margin: 8px 5px;
+    border-radius: 8px;
+    background: #1d1b31;
+    transition: all 0.5s ease;
+}
+
+.sidebar .sidebar-account:hover {
+    background: rgb(219, 219, 219);
+    color: #11101d;
+    transition: all 0.5s ease;
 }
 
 .sidebar.active .sidebar-account {
+    margin: 8px 10px;
 }
 
-.page-content {
+.sidebar .sidebar-account .person {
+    display: none;
+    justify-content: space-between;
+}
+
+.sidebar.active .sidebar-account .person {
+    display: flex;
+}
+
+.sidebar .sidebar-account .person .image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sidebar .sidebar-account .person .image img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    object-fit: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sidebar .sidebar-account .person .info {
+    align-self: center;
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+}
+
+.sidebar .sidebar-account .person .info .name {
+    font-size: 14px;
+}
+
+.sidebar .sidebar-account .person .info .status {
+    font-size: 12px;
+    user-select: none;
+}
+
+.sidebar .sidebar-account .logout {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 8px 8px;
+    font-size: 24px;
+    cursor: pointer;
 }
