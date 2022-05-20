@@ -1,24 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Poppins&family=Roboto&display=swap");
 
 .page {
     display: flex;
 }
 
 .page .sidebar {
-    color: white;
+    color: rgb(219, 219, 219);
     position: sticky;
     top: 0;
     height: 100vh;
     background-color: #11101d;
     flex: 0 0 40px;
-    transition: all 0.5s ease;
     overflow: hidden;
     z-index: 999;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-
     min-width: 60px;
+
+    transition: all 0.5s ease;
 }
 
 .page .sidebar.active {
@@ -31,24 +31,38 @@
     align-items: center;
     height: 50px;
     justify-content: center;
-
 }
 
 .page .sidebar.active .sidebar-header {
     justify-content: space-between;
-    padding: 0 8%;
-
+    padding-right: 8%;
+    padding-left: 5%;
 }
 
 .page .sidebar .sidebar-header .sidebar-brand {
     font-size: 24px;
     display: none;
     cursor: pointer;
-
 }
 
 .page .sidebar.active .sidebar-header .sidebar-brand {
-    display: block;
+    display: flex;
+}
+
+.page .sidebar .sidebar-header .sidebar-brand .sidebar-brand-icon {
+    display: flex;
+    align-items: center;
+}
+
+.page .sidebar .sidebar-header .sidebar-brand .sidebar-brand-icon > i {
+    align-self: center;
+    font-size: 25px;
+}
+
+.page .sidebar .sidebar-header .sidebar-brand .sidebar-brand-title {
+    text-align: center;
+    margin: 0 15px;
+    font-family: "Poppins", sans-serif;
 }
 
 .page .sidebar .sidebar-header .sidebar-btn {
@@ -56,20 +70,47 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: 5px;
+
 }
 
-.page .sidebar .sidebar-header .sidebar-btn > i{
-    text-align: center;
+.page .sidebar .sidebar-header .sidebar-btn:hover {
+    color: white;
+}
 
+.page .sidebar .sidebar-header .sidebar-btn > i {
+    text-align: center;
+    padding: 5px;
 }
 
 .page .sidebar.active .sidebar-header .sidebar-btn {
+    transform: rotate(180deg);
+    transition: all 0.5s ease;
 }
 
 .page .sidebar .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: stretch;
 }
 
 .page .sidebar.active .sidebar-content {
+}
+
+.page .sidebar .sidebar-content > .sb-content-link {
+    text-decoration: none;
+}
+
+.page .sidebar.active .sidebar-content > .sb-content-link {
+}
+
+.page .sidebar .sidebar-content .sb-content-link .sb-content-element {
+    text-decoration: none;
+    text-align: center;
+}
+
+.page .sidebar.active .sidebar-content .sb-content-link .sb-content-element {
 }
 
 .page .sidebar .sidebar-account {

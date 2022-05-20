@@ -12,7 +12,14 @@ const Sidebar = (props) => {
         <div className={styles["page"]}>
             <div className={styles["sidebar"] + active}>
                 <div className={styles["sidebar-header"]}>
-                    <div className={styles["sidebar-brand"]}>TodoList</div>
+                    <div className={styles["sidebar-brand"]}>
+                        <div className={styles["sidebar-brand-icon"]}>
+                            <i className="bx bxs-edit-alt"></i>
+                        </div>
+                        <div className={styles["sidebar-brand-title"]}>
+                            TodoList
+                        </div>
+                    </div>
                     <div className={styles["sidebar-btn"]}>
                         <i
                             className="bx bx-menu"
@@ -22,17 +29,41 @@ const Sidebar = (props) => {
                 </div>
 
                 <div className={styles["sidebar-content"]}>
-                    <ul>
-                        <li>1####</li>
-                        <li>2####</li>
-                        <li>3####</li>
-                        <li>4####</li>
-                    </ul>
+                    <Link to="" className={styles["sb-content-link"]}>
+                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["icon"]}>
+                                <i className="bx bx-envelope-open"></i>
+                            </div>
+                            <div className={styles["title"]}>###1###</div>
+                        </div>
+                    </Link>
+                    <Link to="" className={styles["sb-content-link"]}>
+                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["icon"]}>
+                                <i className="bx bx-envelope-open"></i>
+                            </div>
+                            <div className={styles["title"]}>###2###</div>
+                        </div>
+                    </Link>
+                    <Link to="" className={styles["sb-content-link"]}>
+                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["icon"]}>
+                                <i className="bx bx-envelope-open"></i>
+                            </div>
+                            <div className={styles["title"]}>###3###</div>
+                        </div>
+                    </Link>
+                    <Link to="" className={styles["sb-content-link"]}>
+                        <div className={styles["sb-content-element"]}>
+                            <div className={styles["icon"]}>
+                                <i className="bx bx-envelope-open"></i>
+                            </div>
+                            <div className={styles["title"]}>###4###</div>
+                        </div>
+                    </Link>
                 </div>
 
-                <div className={styles["sidebar-account"]}>
-                    Account
-                </div>
+                <div className={styles["sidebar-account"]}>Account</div>
             </div>
 
             <div className={styles["page-content"]}>{props.children}</div>
