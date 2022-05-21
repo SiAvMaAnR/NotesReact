@@ -2,13 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import "/node_modules/boxicons/css/boxicons.css";
-import img from '../../styles/wallhaven-477pv4.jpg';
-
+import img from "../../styles/wallhaven-477pv4.jpg";
 
 const Sidebar = (props) => {
     const [isActive, setIsActive] = useState(false);
 
     let active = isActive ? " " + styles["active"] : "";
+
+    const authorizeIcon = {
+        login: (
+            <div className={styles["logout"]} onClick={()=>props.setIsAuthorized(true)}>
+                <i className="bx bx-log-in-circle"></i>
+            </div>
+        ),
+        logout: (
+            <div className={styles["logout"]} onClick={()=>props.setIsAuthorized(false)}>
+                <i className="bx bx-log-out-circle"></i>
+            </div>
+        ),
+    };
 
     return (
         <div className={styles["page"]}>
@@ -78,19 +90,20 @@ const Sidebar = (props) => {
                 <div className={styles["sidebar-account"]}>
                     <div className={styles["person"]}>
                         <div className={styles["image"]}>
-                            <img
-                                src={img}
-                                alt="person"
-                            />
+                            <img src={img} alt="person" />
                         </div>
                         <div className={styles["info"]}>
-                            <div className={styles["name"]}>Samarkin Ivan</div>
-                            <div className={styles["status"]}>Online</div>
+                            <div className={styles["name"]}>
+                                {props.surname} {props.firstname}
+                            </div>
+                            <div className={styles["status"]}>
+                                {props.status}
+                            </div>
                         </div>
                     </div>
-                    <div className={styles["logout"]}>
-                        <i className="bx bx-log-out-circle"></i>
-                    </div>
+                    {props.isAuthorized
+                        ? authorizeIcon.logout
+                        : authorizeIcon.login}
                 </div>
             </div>
 
