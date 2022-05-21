@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import "/node_modules/boxicons/css/boxicons.css";
+import img from '../../styles/wallhaven-477pv4.jpg';
+
 
 const Sidebar = (props) => {
     const [isActive, setIsActive] = useState(false);
@@ -40,7 +42,7 @@ const Sidebar = (props) => {
                         </div>
                     </div>
                     <div className={styles["sb-content-element"]}>
-                        <Link to="" className={styles["sb-content-link"]}>
+                        <Link to="/Tasks" className={styles["sb-content-link"]}>
                             <div className={styles["icon"]}>
                                 <i className="bx bx-task"></i>
                             </div>
@@ -77,7 +79,7 @@ const Sidebar = (props) => {
                     <div className={styles["person"]}>
                         <div className={styles["image"]}>
                             <img
-                                src="https://images.pexels.com/photos/4553036/pexels-photo-4553036.jpeg?cs=srgb&dl=pexels-roman-odintsov-4553036.jpg&fm=jpg"
+                                src={img}
                                 alt="person"
                             />
                         </div>
