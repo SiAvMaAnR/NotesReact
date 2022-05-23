@@ -1,12 +1,12 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import { BrowserRouter as MyRouter, Routes, Route } from "react-router-dom";
-import { Home, Tasks, About } from "../src/pages/Index";
+import { Home, Tasks, Login } from "../src/pages/Index";
 import './App.css';
 import { useState } from "react";
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
-  const [isOnline, setOnline] = useState(true);
+  const [isOnline, setIsOnline] = useState(true);
   return (
     <div >
       <MyRouter>
@@ -22,9 +22,9 @@ function App() {
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/tasks" element={<Tasks isAuthorized={isAuthorized} />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
 
-              <Route path="/*" element={<Home />} />
+              <Route path="/*" element={<Login />} />
             </Routes>
           </Sidebar>
         </div>
