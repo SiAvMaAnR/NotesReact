@@ -25,12 +25,19 @@ const Login = (props) => {
             token: response.data.token,
             type: response.data.type,
         });
+
+        localStorage.setItem(
+            "token",
+            `${accessToken.type} ${accessToken.token}`
+        );
     };
 
     return (
         <div className="page">
             <div className="authorize-container">
-                <div>{accessToken.token}</div>
+                <div>
+                    {/* {localStorage.getItem()} */}
+                </div>
                 <div className="login">
                     <input
                         placeholder="email"

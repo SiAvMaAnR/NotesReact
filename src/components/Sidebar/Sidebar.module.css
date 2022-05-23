@@ -10,8 +10,7 @@
     top: 0;
     height: 100vh;
     background-color: #11101d;
-    flex-shrink: 0;
-    flex-grow: 0;
+    flex: 0 0 70px;
     overflow: hidden;
     z-index: 999;
     display: flex;
@@ -19,7 +18,7 @@
     flex-direction: column;
     min-width: 70px;
 
-    transition: flex 0.6s ease;
+    transition: all 0.6s ease;
 }
 
 .sidebar.active {
@@ -281,4 +280,5 @@
 
 .page-content{
     flex: 1 0;
+
 }

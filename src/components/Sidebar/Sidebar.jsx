@@ -62,7 +62,7 @@ const Sidebar = (props) => {
                         </Link>
                     </div>
                     <div className={styles["sb-content-element"]}>
-                        <Link to="" className={styles["sb-content-link"]}>
+                        <Link to="/Home" className={styles["sb-content-link"]}>
                             <div className={styles["icon"]}>
                                 <i className="bx bx-heart"></i>
                             </div>
