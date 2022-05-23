@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import "/node_modules/boxicons/css/boxicons.css";
 import img from "../../styles/wallhaven-477pv4.jpg";
+import SidebarLink from "../SidebarLink/SidebarLink";
 
 const Sidebar = (props) => {
     const [isActive, setIsActive] = useState(false);
@@ -11,12 +12,18 @@ const Sidebar = (props) => {
 
     const authorizeIcon = {
         login: (
-            <div className={styles["logout"]} onClick={()=>props.setIsAuthorized(true)}>
+            <div
+                className={styles["logout"]}
+                onClick={() => props.setIsAuthorized(true)}
+            >
                 <i className="bx bx-log-in-circle"></i>
             </div>
         ),
         logout: (
-            <div className={styles["logout"]} onClick={()=>props.setIsAuthorized(false)}>
+            <div
+                className={styles["logout"]}
+                onClick={() => props.setIsAuthorized(false)}
+            >
                 <i className="bx bx-log-out-circle"></i>
             </div>
         ),
@@ -53,38 +60,22 @@ const Sidebar = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles["sb-content-element"]}>
-                        <Link to="/Tasks" className={styles["sb-content-link"]}>
-                            <div className={styles["icon"]}>
-                                <i className="bx bx-task"></i>
-                            </div>
-                            <div className={styles["title"]}>Tasks</div>
-                        </Link>
-                    </div>
-                    <div className={styles["sb-content-element"]}>
-                        <Link to="/Home" className={styles["sb-content-link"]}>
-                            <div className={styles["icon"]}>
-                                <i className="bx bx-heart"></i>
-                            </div>
-                            <div className={styles["title"]}>Favorites</div>
-                        </Link>
-                    </div>
-                    <div className={styles["sb-content-element"]}>
-                        <Link to="" className={styles["sb-content-link"]}>
-                            <div className={styles["icon"]}>
-                                <i className="bx bx-bell"></i>
-                            </div>
-                            <div className={styles["title"]}>Notification</div>
-                        </Link>
-                    </div>
-                    <div className={styles["sb-content-element"]}>
-                        <Link to="" className={styles["sb-content-link"]}>
-                            <div className={styles["icon"]}>
-                                <i className="bx bx-cog"></i>
-                            </div>
-                            <div className={styles["title"]}>Settings</div>
-                        </Link>
-                    </div>
+
+                    <SidebarLink to="/Tasks" title="Tasks" styles={styles}>
+                        <i className="bx bx-task"></i>
+                    </SidebarLink>
+
+                    <SidebarLink to="/Home" title="Favorites" styles={styles}>
+                        <i className="bx bx-heart"></i>
+                    </SidebarLink>
+
+                    <SidebarLink to="" title="Notification" styles={styles}>
+                        <i className="bx bx-bell"></i>
+                    </SidebarLink>
+
+                    <SidebarLink to="" title="Settings" styles={styles}>
+                        <i className="bx bx-cog"></i>
+                    </SidebarLink>
                 </div>
 
                 <div className={styles["sidebar-account"]}>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../api/index";
+import Input from "../components/UI/Input/Input";
+
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -17,8 +19,8 @@ const Login = (props) => {
         event.preventDefault();
 
         const response = await accountApi.login({
-            email: "user@example.com",
-            password: "string",
+            email: email,
+            password: password,
         });
 
         setAccessToken({
@@ -35,25 +37,10 @@ const Login = (props) => {
     return (
         <div className="page">
             <div className="authorize-container">
-                <div>
-                    {/* {localStorage.getItem()} */}
-                </div>
-                <div className="login">
-                    <input
-                        placeholder="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="text"
-                    />
-                </div>
-                <div className="password">
-                    <input
-                        placeholder="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="text"
-                    />
-                </div>
+                {localStorage.getItem('token')}
+                <Input placeholder="login" value={email} setValue={setEmail}/>
+                <Input placeholder="password" value={password} setValue={setPassword}/>
+                
                 <div className="btn-send">
                     <button onClick={(e) => loginAccount(e)}>Login</button>
                 </div>
