@@ -40,5 +40,37 @@ export const accountApi = {
             .then(response => response.data)
             .catch(error => undefined);
     },
-    
+    info: async (params) => {
+        const config = {
+            headers: {
+                'accept': '*/*',
+                'Authorization': `Bearer ${params['token']}`,
+            }
+        }
+
+        return axios.get(`http://localhost:8080/api/Account/Info`, config)
+            .then(response => response.data)
+            .catch(error => undefined);
+    },
+    edit: async (params) => {
+        const body = {
+            login: params['login'],
+            firstname: params['firstname'],
+            surname: params['surname'],
+            age: params['age']
+        };
+
+        const config = {
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${params['token']}`,
+            }
+        }
+
+        return axios.put(`http://localhost:8080/api/Account/Edit`, body, config)
+            .then(response => response.data)
+            .catch(error => undefined);
+    }
+
 }

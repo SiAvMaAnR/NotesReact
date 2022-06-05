@@ -220,24 +220,20 @@
 
 .sidebar.active .sidebar-account {
     margin: 8px 10px;
-}
-
-.sidebar .sidebar-account .person {
-    display: none;
+    display: flex;
     justify-content: space-between;
 }
 
-.sidebar.active .sidebar-account .person {
-    display: flex;
-}
-
-.sidebar .sidebar-account .person .image {
-    display: flex;
+.sidebar .sidebar-account .image {
+    display: none;
     flex-direction: column;
     justify-content: center;
+    margin: 0 5px;
+    user-select: none;
+    flex: 0 0;
 }
 
-.sidebar .sidebar-account .person .image img {
+.sidebar .sidebar-account .image img {
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -247,24 +243,35 @@
     overflow: hidden;
 }
 
-.sidebar .sidebar-account .person .info {
+.sidebar .sidebar-account .info {
     align-self: center;
-    margin-left: 20px;
-    display: flex;
+    display: none;
     flex-wrap: nowrap;
     white-space: nowrap;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     font-family: "Poppins", sans-serif;
+    flex: 1 0;
+    overflow-x: hidden;
+}
+
+.sidebar.active .sidebar-account .image,
+.sidebar.active .sidebar-account .info {
+    display: flex;
+}
+
+.sidebar .sidebar-account .info .name {
+    font-size: 14px;
+    overflow-x: scroll;
     width: 100%;
 }
 
-.sidebar .sidebar-account .person .info .name {
-    font-size: 14px;
+.sidebar .sidebar-account .info .name::-webkit-scrollbar {
+    display: none;
 }
 
-.sidebar .sidebar-account .person .info .status {
+.sidebar .sidebar-account .info .status {
     font-size: 12px;
     user-select: none;
 }
@@ -276,9 +283,10 @@
     padding: 8px 8px;
     font-size: 24px;
     cursor: pointer;
+    flex: 0 0;
 }
 
-.page-content{
+.page-content {
     flex: 1 0;
-
+    background: #f9fbfc;
 }

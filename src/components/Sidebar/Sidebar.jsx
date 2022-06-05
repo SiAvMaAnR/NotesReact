@@ -1,32 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import "/node_modules/boxicons/css/boxicons.css";
 import img from "../../styles/wallhaven-477pv4.jpg";
 import SidebarLink from "../SidebarLink/SidebarLink";
+import SidebarSearch from "../SidebarSearch/SidebarSearch";
+import { AuthContext, UserContext } from "../../App";
 
 const Sidebar = (props) => {
     const [isActive, setIsActive] = useState(false);
 
+    const [isLogged, login, logout] = useContext(AuthContext);
+    const [user] = useContext(UserContext);
+
     let active = isActive ? " " + styles["active"] : "";
 
-    const authorizeIcon = {
-        login: (
-            <div
-                className={styles["logout"]}
-                onClick={() => props.setIsAuthorized(true)}
-            >
-                <i className="bx bx-log-in-circle"></i>
-            </div>
-        ),
-        logout: (
-            <div
-                className={styles["logout"]}
-                onClick={() => props.setIsAuthorized(false)}
-            >
-                <i className="bx bx-log-out-circle"></i>
-            </div>
-        ),
+    const logoutHandler = () => {
+        logout();
     };
 
     return (
@@ -50,16 +40,9 @@ const Sidebar = (props) => {
                 </div>
 
                 <div className={styles["sidebar-content"]}>
-                    <div className={styles["sb-content-element"]}>
-                        <div className={styles["sb-content-btn"]}>
-                            <div className={styles["icon"]}>
-                                <i className="bx bx-search-alt"></i>
-                            </div>
-                            <div className={styles["search"]}>
-                                <input type="text" placeholder="Search..." />
-                            </div>
-                        </div>
-                    </div>
+                    <SidebarSearch styles={styles}>
+                        <i className="bx bx-search-alt"></i>
+                    </SidebarSearch>
 
                     <SidebarLink to="/Tasks" title="Tasks" styles={styles}>
                         <i className="bx bx-task"></i>
@@ -73,28 +56,25 @@ const Sidebar = (props) => {
                         <i className="bx bx-bell"></i>
                     </SidebarLink>
 
-                    <SidebarLink to="" title="Settings" styles={styles}>
+                    <SidebarLink to="/Test" title="Settings" styles={styles}>
                         <i className="bx bx-cog"></i>
                     </SidebarLink>
                 </div>
 
                 <div className={styles["sidebar-account"]}>
-                    <div className={styles["person"]}>
-                        <div className={styles["image"]}>
-                            <img src={img} alt="person" />
-                        </div>
-                        <div className={styles["info"]}>
-                            <div className={styles["name"]}>
-                                {props.surname} {props.firstname}
-                            </div>
-                            <div className={styles["status"]}>
-                                {props.status}
-                            </div>
-                        </div>
+                    <div className={styles["image"]}>
+                        <img src={img} alt="person" />
                     </div>
-                    {props.isAuthorized
-                        ? authorizeIcon.logout
-                        : authorizeIcon.login}
+                    <div className={styles["info"]}>
+                        <div className={styles["name"]}>{props.login}</div>
+                        <div className={styles["status"]}>{props.role}</div>
+                    </div>
+                    <div
+                        className={styles["logout"]}
+                        onClick={() => logoutHandler()}
+                    >
+                        <i className="bx bx-log-out-circle"></i>
+                    </div>
                 </div>
             </div>
 

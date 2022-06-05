@@ -1,37 +1,56 @@
 import Sidebar from "./components/Sidebar/Sidebar";
-import { BrowserRouter as MyRouter, Routes, Route } from "react-router-dom";
-import { Home, Tasks, Login } from "../src/pages/Index";
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
+import { Login, Register, Home, Tasks, Test } from "../src/pages/Index";
+import { useEffect, useMemo, useState, createContext } from "react";
 import './App.css';
-import { useState } from "react";
+import { useToken, useAuth, useUser } from "./hooks/index";
+
+const TokenContext = createContext();
+const AuthContext = createContext();
+const UserContext = createContext();
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [isOnline, setIsOnline] = useState(true);
+  const [token, setToken] = useToken();
+  const [isLogged, login, logout] = useAuth([token, setToken]);
+  const [user] = useUser([token, isLogged, logout]);
+
+  const isEmptyUser = () => {
+    return Object.keys(user).length === 0;
+  }
+
   return (
-    <div >
-      <MyRouter>
+    <TokenContext.Provider value={[token, setToken]}>
+      <AuthContext.Provider value={[isLogged, login, logout]}>
+        <UserContext.Provider value={[user]}>
+          <BrowserRouter>
+            <div>
+              {(isLogged) ?
+                <Sidebar
+                  login={!isEmptyUser() ? user['login'] : ''}
+                  role={!isEmptyUser() ? user['role'] : ''}
+                  isLogged={isLogged}>
 
-        <div>
-          <Sidebar
-            surname={'Samarkin'}
-            firstname={'Ivan'}
-            status={isOnline ? 'Online' : 'Offline'}
-            isAuthorized={isAuthorized}
-            setIsAuthorized={setIsAuthorized}>
+                  <Routes>
+                    <Route path="/Home" element={<Home />} />
+                    <Route exact path="/Tasks" element={<Tasks />} />
+                    <Route exact path="/Test" element={<Test />} />
+                    <Route path="/*" element={<Home />} />
+                  </Routes>
+                </Sidebar>
+                :
+                <Routes>
+                  <Route path="/Register" element={<Register />} />
+                  <Route path="/*" element={<Login />} />
+                </Routes>
+              }
 
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/tasks" element={<Tasks isAuthorized={isAuthorized} />} />
-              <Route path="/login" element={<Login />} />
-
-              <Route path="/*" element={<Login />} />
-            </Routes>
-          </Sidebar>
-        </div>
-
-      </MyRouter>
-    </div>
+            </div>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </AuthContext.Provider>
+    </TokenContext.Provider >
   );
 }
 
+export { TokenContext, AuthContext, UserContext };
 export default App;
