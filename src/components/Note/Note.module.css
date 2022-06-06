@@ -1,0 +1,7 @@
+.container {
+}
+
+.container > .content {
+    display: flex;
+    justify-content: space-around;
+}

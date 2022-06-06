@@ -10,7 +10,7 @@
     border: none;
     min-height: 50px;
     font-family: "Poppins", sans-serif;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
 }
 
 .container > button.white {
@@ -27,7 +27,7 @@
 .container > button:hover {
     cursor: pointer;
     border-radius: 10px;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
     font-size: 17px;
 }
 

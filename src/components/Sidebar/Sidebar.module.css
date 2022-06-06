@@ -265,6 +265,7 @@
     font-size: 14px;
     overflow-x: scroll;
     width: 100%;
+    text-align: center;
 }
 
 .sidebar .sidebar-account .info .name::-webkit-scrollbar {
