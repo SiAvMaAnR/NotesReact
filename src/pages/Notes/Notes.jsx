@@ -39,25 +39,17 @@ const Tasks = (props) => {
             <div>totalNotes: {totalNotes}</div>
             <div>totalPage: {totalPages}</div>
 
-            <table>
-                <tr>
-                    <th>Is Done</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Time</th>
-                    <th>Delete</th>
-                </tr>
-
+            <div>
                 {notes.map((note) => (
                     <Note
                         key={note.id}
                         title={note.title}
                         description={note.description}
-                        isDone={note.isDone.toString()}
+                        isDone={note.isDone}
                         date={new Date(note.createDate)}
                     />
                 ))}
-            </table>
+            </div>
         </div>
     );
 };

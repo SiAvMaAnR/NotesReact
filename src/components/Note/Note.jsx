@@ -7,7 +7,7 @@ const Note = (props) => {
             <div className={styles["content"]}>
                 <div className={styles["title"]}>{props.title}</div>
                 <div className={styles["description"]}>{props.description}</div>
-                <div className={styles["isDone"]}>{props.isDone}</div>
+                <div className={styles["isDone"]}>{props.isDone.toString()}</div>
                 <div className={styles["time"]}>
                     {props.date.toLocaleTimeString()}
                 </div>
