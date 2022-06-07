@@ -1,10 +1,19 @@
 .container {
     background: transparent;
-    box-shadow: 0 0 3px 1px rgba(168, 168, 168, 0.9);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
     margin: 5px;
+    border-radius: 5px;
 }
 
 .container > .content {
     display: flex;
     justify-content: space-around;
+    overflow-x: auto;
+}
+
+.container>.content ::-webkit-scrollbar{
+    display: none;
+}
+
+.container > .content > * {
 }

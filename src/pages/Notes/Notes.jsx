@@ -5,7 +5,7 @@ import Note from "../../components/Note/Note";
 import { useToken } from "../../hooks";
 import styles from "./Notes.module.css";
 
-const Tasks = (props) => {
+const Notes = (props) => {
     const [token, setToken] = useToken();
     const [pageNumber, setPageNumber] = useState(0);
     const [pageSize, setPageSize] = useState(100);
@@ -32,21 +32,22 @@ const Tasks = (props) => {
     }, []);
 
     return (
-        <div>
+        <div className={styles['page']}>
             <div>TASKS</div>
             <div>pageNumber: {pageNumber}</div>
             <div>pageSize: {pageSize}</div>
             <div>totalNotes: {totalNotes}</div>
             <div>totalPage: {totalPages}</div>
 
-            <div>
+            <div className={styles['notes-container']}>
                 {notes.map((note) => (
                     <Note
                         key={note.id}
                         title={note.title}
                         description={note.description}
                         isDone={note.isDone}
-                        date={new Date(note.createDate)}
+                        createDate={new Date(note.createDate)}
+                        eventDate={new Date(note.eventDate)}
                     />
                 ))}
             </div>
@@ -54,4 +55,4 @@ const Tasks = (props) => {
     );
 };
 
-export default Tasks;
+export default Notes;

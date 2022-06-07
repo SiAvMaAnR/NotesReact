@@ -1,6 +1,6 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
-import { Login, Register, Home, Tasks, Test } from "../src/pages/Index";
+import { Login, Register, Home, Notes, Test } from "../src/pages/Index";
 import { useEffect, useMemo, useState, createContext } from "react";
 import './App.css';
 import { useToken, useAuth, useUser } from "./hooks/index";
@@ -32,7 +32,7 @@ function App() {
 
                   <Routes>
                     <Route path="/Home" element={<Home />} />
-                    <Route exact path="/Tasks" element={<Tasks />} />
+                    <Route exact path="/Notes" element={<Notes />} />
                     <Route exact path="/Test" element={<Test />} />
                     <Route path="/*" element={<Home />} />
                   </Routes>

@@ -44,7 +44,7 @@ const Sidebar = (props) => {
                         <i className="bx bx-search-alt"></i>
                     </SidebarSearch>
 
-                    <SidebarLink to="/Tasks" title="Tasks" styles={styles}>
+                    <SidebarLink to="/Notes" title="Notes" styles={styles}>
                         <i className="bx bx-task"></i>
                     </SidebarLink>
 

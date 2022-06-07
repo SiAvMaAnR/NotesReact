@@ -8,12 +8,16 @@ const Note = (props) => {
                 <div className={styles["title"]}>{props.title}</div>
                 <div className={styles["description"]}>{props.description}</div>
                 <div className={styles["isDone"]}>{props.isDone.toString()}</div>
-                <div className={styles["time"]}>
-                    {props.date.toLocaleTimeString()}
+                <div className={styles["createTime"]}>
+                    {props.createDate.toLocaleTimeString()}
                 </div>
 
-                <div className={styles["date"]}>
-                    {props.date.toLocaleDateString()}
+                <div className={styles["createDate"]}>
+                    {props.createDate.toLocaleDateString()}
+                </div>
+
+                <div className={styles["eventDate"]}>
+                    {props.eventDate.toLocaleDateString()}
                 </div>
             </div>
         </div>
