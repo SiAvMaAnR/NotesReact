@@ -16,4 +16,5 @@
 }
 
 .container > .content > * {
+    background-color: red;
 }
