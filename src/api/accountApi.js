@@ -16,7 +16,7 @@ export const accountApi = {
 
         return axios.post(`http://localhost:8080/api/Account/Login`, body, config)
             .then(response => response.data)
-            .catch(error => undefined);
+            .catch(error => null);
     },
     register: async (params) => {
         const body = {
@@ -38,7 +38,7 @@ export const accountApi = {
 
         return axios.post(`http://localhost:8080/api/Account/Register`, body, config)
             .then(response => response.data)
-            .catch(error => undefined);
+            .catch(error => null);
     },
     info: async (params) => {
         const config = {
@@ -50,7 +50,7 @@ export const accountApi = {
 
         return axios.get(`http://localhost:8080/api/Account/Info`, config)
             .then(response => response.data)
-            .catch(error => undefined);
+            .catch(error => null);
     },
     edit: async (params) => {
         const body = {
@@ -70,7 +70,7 @@ export const accountApi = {
 
         return axios.put(`http://localhost:8080/api/Account/Edit`, body, config)
             .then(response => response.data)
-            .catch(error => undefined);
+            .catch(error => null);
     }
 
 }

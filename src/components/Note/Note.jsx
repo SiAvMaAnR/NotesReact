@@ -16,6 +16,10 @@ const Note = (props) => {
                     {props.createDate.toLocaleDateString()}
                 </div>
 
+                <div className={styles["eventTime"]}>
+                    {props.eventDate.toLocaleTimeString()}
+                </div>
+
                 <div className={styles["eventDate"]}>
                     {props.eventDate.toLocaleDateString()}
                 </div>

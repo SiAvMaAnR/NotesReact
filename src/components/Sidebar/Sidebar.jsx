@@ -28,7 +28,7 @@ const Sidebar = (props) => {
                             <i className="bx bxs-edit-alt"></i>
                         </div>
                         <div className={styles["sidebar-brand-title"]}>
-                            TodoList
+                            Notes
                         </div>
                     </div>
                     <div className={styles["sidebar-btn"]}>
