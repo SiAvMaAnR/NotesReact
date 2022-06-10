@@ -23,7 +23,6 @@ export const tasksApi = {
   },
 
   getAllTasks: async (params) => {
-
     const config = {
       headers: {
         'accept': '*/*',
@@ -36,8 +35,22 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  getTask: async () => {
+  getTask: async (params) => {
 
+  },
+
+  deleteTask: async (params) => {
+    const config = {
+      headers: {
+        'accept': '*/*',
+        'Authorization': `Bearer ${params['token']}`,
+        'Content-Type': 'application/json'
+      },
+      data: params['id']
+    }
+
+    return axios.delete('http://localhost:8080/api/Note', config)
+      .then(response => response.data)
+      .catch(error => null)
   }
-
 }

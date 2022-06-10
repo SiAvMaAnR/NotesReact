@@ -82,6 +82,10 @@ const NoteAdding = (props) => {
                     Click
                 </Button>
             </div>
+
+            <div>
+                
+            </div>
         </div>
     );
 };

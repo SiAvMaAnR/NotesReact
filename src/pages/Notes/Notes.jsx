@@ -52,6 +52,7 @@ const Notes = (props) => {
                 {notes.map((note) => (
                     <Note
                         key={note.id}
+                        id={note.id}
                         title={note.title}
                         description={note.description}
                         isDone={note.isDone}
