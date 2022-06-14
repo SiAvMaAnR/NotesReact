@@ -1,12 +1,31 @@
 import React from "react";
-import style from "../Button/Button.module.css";
+import styles from "../Button/Button.module.css";
+import PropTypes from "prop-types";
 
-const Button = (props) => {
+const Button = ({ style, classStyle, onClick, children }) => {
     return (
-        <div className={style["container"]}>
-            <button className={style[props.color]} {...props}>{props.children}</button>
+        <div className={styles["container"]}>
+            <button
+                style={style}
+                className={styles[classStyle]}
+                onClick={() => onClick()}
+            >
+                {children}
+            </button>
         </div>
     );
+};
+
+Button.propTypes = {
+    style: PropTypes.object,
+    classStyle: PropTypes.string,
+    children: PropTypes.string,
+    onClick: PropTypes.func,
+};
+
+Button.defautProps = {
+    classStyle: "blue",
+    children: "Click",
 };
 
 export default Button;

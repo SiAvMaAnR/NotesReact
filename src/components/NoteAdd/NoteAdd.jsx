@@ -3,9 +3,9 @@ import Input from "../UI/Input/Input";
 import DateTimeInput from "../UI/DateTimeInput/DateTimeInput";
 import Button from "../UI/Button/Button";
 import { tasksApi } from "../../api";
-import styles from "./NoteAdding.module.css";
+import styles from "./NoteAdd.module.css";
 
-const NoteAdding = (props) => {
+const NoteAdd = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [eventDate, setEventDate] = useState("");
@@ -34,7 +34,7 @@ const NoteAdding = (props) => {
             })
             .then((response) => {
                 if (response) {
-                    props.getTasks();
+                    props.updateTasks();
                 }
             })
             .catch((error) => {
@@ -44,12 +44,6 @@ const NoteAdding = (props) => {
 
     return (
         <div className={styles["container"]}>
-            <div>
-                <div>{title}</div>
-                <div>{description}</div>
-                <div>{eventDate}</div>
-            </div>
-
             <div>
                 <Input
                     style={{ width: "300px" }}
@@ -78,16 +72,14 @@ const NoteAdding = (props) => {
             </div>
 
             <div>
-                <Button color="blue" onClick={(e) => clickHandler(e)}>
+                <Button classStyle="blue" onClick={(e) => clickHandler(e)}>
                     Click
                 </Button>
             </div>
 
-            <div>
-                
-            </div>
+            <div></div>
         </div>
     );
 };
 
-export default NoteAdding;
+export default NoteAdd;

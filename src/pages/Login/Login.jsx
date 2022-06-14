@@ -95,13 +95,13 @@ const Login = (props) => {
                 </div>
 
                 <div className={style["btn-login-container"]}>
-                    <Button color="blue" onClick={() => loginHandler()}>
+                    <Button classStyle="blue" onClick={() => loginHandler()}>
                         Sign in
                     </Button>
                 </div>
 
                 <div className={style["btn-register-container"]}>
-                    <Button color="white" onClick={() => registerHandler()}>
+                    <Button classStyle="white" onClick={() => registerHandler()}>
                         Create new account
                     </Button>
                 </div>

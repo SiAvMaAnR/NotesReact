@@ -1,19 +1,17 @@
-.container {
-    background: transparent;
-    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
-    margin: 5px;
+.content {
+    background: #2e2e2e;
+    color: #c6c6c6;
     border-radius: 5px;
-}
-
-.container > .content {
+    height: 50px;
+    margin: 2px 0px;
     display: flex;
     justify-content: space-around;
     overflow-x: auto;
 }
 
-.container>.content ::-webkit-scrollbar{
+.content ::-webkit-scrollbar {
     display: none;
 }
 
-.container > .content > * {
+.content > * {
 }

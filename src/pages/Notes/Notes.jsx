@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../../api";
 import Note from "../../components/Note/Note";
-import NoteAdding from "../../components/NoteAdding/NoteAdding";
+import NoteAdd from "../../components/NoteAdd/NoteAdd";
 import { useToken } from "../../hooks";
 import styles from "./Notes.module.css";
 
@@ -15,10 +15,10 @@ const Notes = (props) => {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        getTasks();
+        updateTasks();
     }, []);
 
-    function getTasks() {
+    function updateTasks() {
         tasksApi
             .getAllTasks({
                 token: token,
@@ -29,7 +29,6 @@ const Notes = (props) => {
                 setNotes(response?.data.notes);
                 setTotalNotes(response?.data.totalNotes);
                 setTotalPages(response?.data.totalPages);
-                console.log(response?.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -38,17 +37,11 @@ const Notes = (props) => {
 
     return (
         <div className={styles["page"]}>
-            <div>TASKS</div>
-            <div>pageNumber: {pageNumber}</div>
-            <div>pageSize: {pageSize}</div>
-            <div>totalNotes: {totalNotes}</div>
-            <div>totalPage: {totalPages}</div>
+            <div className={styles["notes"]}>
+                <div className={styles["header"]}>
+                    <div>To-Do</div>
+                </div>
 
-            <div>
-                <NoteAdding getTasks={getTasks} token={token} />
-            </div>
-
-            <div className={styles["notes-container"]}>
                 {notes.map((note) => (
                     <Note
                         key={note.id}
@@ -58,8 +51,14 @@ const Notes = (props) => {
                         isDone={note.isDone}
                         createDate={new Date(note.createDate)}
                         eventDate={new Date(note.eventDate)}
+                        updateTasks={updateTasks}
                     />
                 ))}
+                <div className={styles["notes-container"]}></div>
+            </div>
+
+            <div className={styles["note-add"]}>
+                <NoteAdd updateTasks={updateTasks} token={token} />
             </div>
         </div>
     );
