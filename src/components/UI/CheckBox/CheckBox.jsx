@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./CheckBox.module.css";
 import PropTypes from "prop-types";
 
-const CheckBox = ({ style, isChecked, updateIsDone }) => {
+const CheckBox = ({ style, isChecked, setIsChecked }) => {
     const changeHandler = (event) => {
-        updateIsDone(!isChecked);
+        setIsChecked((isChecked) => !isChecked);
     };
 
     return (
@@ -21,7 +21,7 @@ const CheckBox = ({ style, isChecked, updateIsDone }) => {
 CheckBox.propTypes = {
     style: PropTypes.object,
     isChecked: PropTypes.bool,
-    updateIsDone: PropTypes.func,
+    setIsChecked: PropTypes.func,
 };
 
 CheckBox.defaultProps = {

@@ -20,20 +20,7 @@ const Note = (props) => {
         });
     }, [isChecked]);
 
-    const updateTasksCallback = useCallback(
-        (time = 1000) => {
-            setTimeout(() => {
-                props.updateTasks();
-            }, time);
-        },
-        [isRemove]
-    );
-
-    const updateIsDone = (isDone) => {
-        setIsChecked(isDone);
-    };
-
-    const deleteHandler = async (time) => {
+    const deleteHandler = async () => {
         const remove = await tasksApi
             .deleteTask({
                 id: props["id"],
@@ -42,13 +29,13 @@ const Note = (props) => {
             .catch((error) => false);
 
         setIsRemove(remove);
-        updateTasksCallback(time);
+        props.updateTasksTimeout();
     };
 
     return (
         <div className={styles["container"] + remove}>
             <div className={styles["done"]}>
-                <CheckBox isChecked={isChecked} updateIsDone={updateIsDone} />
+                <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} />
             </div>
 
             <div className={styles["content"]}>
@@ -70,10 +57,7 @@ const Note = (props) => {
                 </div>
             </div>
 
-            <div
-                className={styles["delete"]}
-                onClick={() => deleteHandler(1000)}
-            >
+            <div className={styles["delete"]} onClick={() => deleteHandler()}>
                 <i className="bx bx-trash"></i>
             </div>
         </div>

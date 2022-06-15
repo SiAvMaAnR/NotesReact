@@ -6,6 +6,8 @@ import NoteAdd from "../../components/NoteAdd/NoteAdd";
 import { useToken } from "../../hooks";
 import styles from "./Notes.module.css";
 
+const TIME_REMOVE_TASK = 1000;
+
 const Notes = (props) => {
     const [token, setToken] = useToken();
     const [pageNumber, setPageNumber] = useState(0);
@@ -13,8 +15,7 @@ const Notes = (props) => {
     const [totalNotes, setTotalNotes] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [notes, setNotes] = useState([]);
-    // const timeout = useRef(null);
-
+    const timeout = useRef(null);
 
     useEffect(() => {
         updateTasks();
@@ -37,7 +38,17 @@ const Notes = (props) => {
             });
     };
 
-    // const updateTasksTimer = () => {};
+    const updateTasksTimeout = () => {
+        if(timeout.current){
+            clearTimeout(timeout.current)
+        }
+
+        timeout.current = setTimeout(() => {
+            updateTasks();
+        }, TIME_REMOVE_TASK);
+    };
+
+    
 
     return (
         <div className={styles["page"]}>
@@ -56,6 +67,7 @@ const Notes = (props) => {
                         createDate={new Date(note.createDate)}
                         eventDate={new Date(note.eventDate)}
                         updateTasks={updateTasks}
+                        updateTasksTimeout={updateTasksTimeout}
                     />
                 ))}
                 <div className={styles["notes-container"]}></div>
