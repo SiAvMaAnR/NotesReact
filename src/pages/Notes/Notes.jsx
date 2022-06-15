@@ -10,10 +10,14 @@ const TIME_REMOVE_TASK = 1000;
 
 const Notes = (props) => {
     const [token, setToken] = useToken();
-    const [pageNumber, setPageNumber] = useState(0);
-    const [pageSize, setPageSize] = useState(100);
-    const [totalNotes, setTotalNotes] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
+
+    const [page, setPage] = useState({
+        number: 0,
+        size: 100,
+        notes: 0,
+        total: 0,
+    });
+
     const [notes, setNotes] = useState([]);
     const timeout = useRef(null);
 
@@ -25,13 +29,18 @@ const Notes = (props) => {
         tasksApi
             .getAllTasks({
                 token: token,
-                pageNumber: pageNumber,
-                pageSize: pageSize,
+                pageNumber: page.number,
+                pageSize: page.size,
             })
             .then((response) => {
+                setPage(
+                    (page) => ({
+                        ...page,
+                        notes: response?.data?.totalNotes,
+                        total: response?.data?.totalPages,
+                    })
+                );
                 setNotes(response?.data?.notes);
-                setTotalNotes(response?.data?.totalNotes);
-                setTotalPages(response?.data?.totalPages);
             })
             .catch((error) => {
                 console.log(error);
@@ -39,16 +48,14 @@ const Notes = (props) => {
     };
 
     const updateTasksTimeout = () => {
-        if(timeout.current){
-            clearTimeout(timeout.current)
+        if (timeout.current) {
+            clearTimeout(timeout.current);
         }
 
         timeout.current = setTimeout(() => {
             updateTasks();
         }, TIME_REMOVE_TASK);
     };
-
-    
 
     return (
         <div className={styles["page"]}>
