@@ -73,7 +73,7 @@ const NoteAdd = (props) => {
 
             <div>
                 <Button classStyle="blue" onClick={(e) => clickHandler(e)}>
-                    Click
+                    Addition
                 </Button>
             </div>
 

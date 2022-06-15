@@ -3,16 +3,17 @@ import { tasksApi } from "../../api";
 import { TokenContext } from "../../App";
 import CheckBox from "../UI/CheckBox/CheckBox";
 import styles from "./Note.module.css";
+import moment from "moment";
 
 const Note = (props) => {
     const [token, setToken] = useContext(TokenContext);
     const [isChecked, setIsChecked] = useState(props["isDone"]);
-    
+
     useEffect(() => {
         tasksApi.setIsDoneTask({
-            id: props['id'],
+            id: props["id"],
             isDone: isChecked,
-            token: token
+            token: token,
         });
     }, [isChecked]);
 
@@ -35,32 +36,26 @@ const Note = (props) => {
     };
 
     return (
-        <div className={styles["content"]}>
-            <div className={styles["title"]}>{props.title}</div>
-            <div className={styles["description"]}>{props.description}</div>
-
+        <div className={styles["container"]}>
             <div className={styles["done"]}>
                 <CheckBox isChecked={isChecked} updateIsDone={updateIsDone} />
             </div>
 
-            <div className={styles["createTime"]}>
-                {props.createDate.toLocaleTimeString()}
-            </div>
+            <div className={styles["content"]}>
+                <div className={styles["title"]}>{props.title}</div>
+                <div className={styles["description"]}>{props.description}</div>
 
-            <div className={styles["create-date"]}>
-                {props.createDate.toLocaleDateString()}
-            </div>
-
-            <div className={styles["event-time"]}>
-                {props.eventDate.toLocaleTimeString()}
-            </div>
-
-            <div className={styles["event-date"]}>
-                {props.eventDate.toLocaleDateString()}
+                <div className={styles["date-time"]}>
+                    <div>
+                        {`${moment(props.eventDate).format(
+                            "ddd, MMM D, HH:mm"
+                        )}`}
+                    </div>
+                </div>
             </div>
 
             <div className={styles["delete"]} onClick={() => deleteHandler()}>
-                Удалить
+                <i className="bx bx-trash"></i>
             </div>
         </div>
     );

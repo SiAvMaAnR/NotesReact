@@ -26,9 +26,9 @@ const Notes = (props) => {
                 pageSize: pageSize,
             })
             .then((response) => {
-                setNotes(response?.data.notes);
-                setTotalNotes(response?.data.totalNotes);
-                setTotalPages(response?.data.totalPages);
+                setNotes(response?.data?.notes);
+                setTotalNotes(response?.data?.totalNotes);
+                setTotalPages(response?.data?.totalPages);
             })
             .catch((error) => {
                 console.log(error);
