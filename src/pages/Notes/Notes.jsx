@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../../api";
 import Note from "../../components/Note/Note";
@@ -13,12 +13,14 @@ const Notes = (props) => {
     const [totalNotes, setTotalNotes] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [notes, setNotes] = useState([]);
+    // const timeout = useRef(null);
+
 
     useEffect(() => {
         updateTasks();
     }, []);
 
-    function updateTasks() {
+    const updateTasks = () => {
         tasksApi
             .getAllTasks({
                 token: token,
@@ -33,7 +35,9 @@ const Notes = (props) => {
             .catch((error) => {
                 console.log(error);
             });
-    }
+    };
+
+    // const updateTasksTimer = () => {};
 
     return (
         <div className={styles["page"]}>

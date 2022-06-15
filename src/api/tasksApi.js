@@ -50,7 +50,7 @@ export const tasksApi = {
     }
 
     return axios.delete('http://localhost:8080/api/Note', config)
-      .then(response => response.data)
+      .then(response => response.status === 200)
       .catch(error => null)
   },
 
