@@ -1,0 +1,34 @@
+.checkbox {
+    position: relative;
+    width: 19px;
+    height: 19px;
+    border: 1.8px solid #c6c6c6;
+
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: all 10s ease;
+}
+
+.checkbox:hover {
+    border: 1.8px solid #4067b7;
+    transition: all 0.5s ease;
+
+}
+
+.checkbox > .active {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    left: 25%;
+    top: 25%;
+    background: #c6c6c6;
+
+    border-radius: 50%;
+}
+
+.checkbox:hover > .active{
+    background: rgb(161, 161, 161);
+    transition: all 1s ease;
+
+}

@@ -4,21 +4,26 @@ import { TokenContext } from "../../App";
 import CheckBox from "../UI/CheckBox/CheckBox";
 import styles from "./Note.module.css";
 import moment from "moment";
+import { useRef } from "react";
 
 const Note = (props) => {
     const [token, setToken] = useContext(TokenContext);
-    const [isChecked, setIsChecked] = useState(props["isDone"]);
+    const [isDoned, setIsDoned] = useState(props["isDone"]);
     const [isRemove, setIsRemove] = useState(false);
 
     const remove = isRemove ? " " + styles["remove"] : "";
 
-    useEffect(() => {
+    const checkboxHandler = () => {
+        const checked = !isDoned;
+
+        setIsDoned(checked);
+
         tasksApi.setIsDoneTask({
             id: props["id"],
-            isDone: isChecked,
+            isDone: checked,
             token: token,
         });
-    }, [isChecked]);
+    };
 
     const deleteHandler = async () => {
         const remove = await tasksApi
@@ -35,10 +40,13 @@ const Note = (props) => {
     return (
         <div className={styles["container"] + remove}>
             <div className={styles["done"]}>
-                <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} />
+                <CheckBox
+                    isChecked={isDoned}
+                    checkboxHandler={checkboxHandler}
+                />
             </div>
 
-            <div className={styles["content"]}>
+            <div className={styles["content"] + (isDoned ? " doned" : "")}>
                 <div className={styles["top"]}>
                     <div className={styles["title"]}>{props.title}</div>
                     <div className={styles["date-time"]}>

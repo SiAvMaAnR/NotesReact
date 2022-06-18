@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Poppins&family=Roboto&display=swap");
+
 .container {
     background: #2e2e2e;
     color: #c6c6c6;
@@ -7,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: "Poppins", sans-serif;
 
     overflow-x: hidden;
     overflow-y: hidden;
@@ -29,37 +32,37 @@
 .container > .delete {
     flex: 0 0;
     padding: 10px;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.container > .done:hover,
 .container > .delete:hover {
     transition: all 0.1s ease;
     color: rgb(161, 161, 161);
     transform: scale(0.95);
 }
 
-.container > .done {
+.container > .delete {
+    cursor: pointer;
 }
 
 .container > .content {
     flex: 1 1;
-    margin: 0 10px;
+    margin: 0 25px;
 
     display: flex;
     flex-direction: column;
+    user-select: none;
+}
+
+.container > .content.doned {
+    text-decoration: line-through;
 }
 
 .container > .delete {
     font-size: 20px;
 }
 
-
-.container > .content > .top{
-display: flex;
-justify-content: space-between;
+.container > .content > .top {
+    display: flex;
+    justify-content: space-between;
 }
-
-
-
