@@ -38,6 +38,14 @@ const Note = (props) => {
         props.updateTasksTimeout();
     };
 
+    const moreHandler = () => {
+        console.log("more");
+    };
+
+    const favoriteHandler = () =>{
+        console.log("favorite");
+    }
+
     return (
         <div>
             <div className={styles["container"] + remove + doned}>
@@ -65,6 +73,14 @@ const Note = (props) => {
                             {props.description}
                         </div>
                     </div>
+                </div>
+
+                <div className={styles["more"]} onClick={() => moreHandler()}>
+                    <i className="bx bx-down-arrow"></i>
+                </div>
+
+                <div className={styles["favorite"]} onClick={() => favoriteHandler()}>
+                    <i className="bx bx-heart"></i>
                 </div>
 
                 <div

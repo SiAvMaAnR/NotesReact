@@ -18,18 +18,20 @@
     top: 25%;
     background: #c6c6c6;
 
+    transform: scale(1.4);
+
     border-radius: 50%;
     transition: all 0.5s ease;
 }
 
 .checkbox:hover {
-    border: 1.8px solid rgb(161, 161, 161);
+    border: 1.8px solid white;
     transition: all 0.2s ease;
-    transform: scale(0.95);
+    transform: scale(1.1);
 }
 
 .checkbox:hover > .active {
-    background: rgb(161, 161, 161);
+    background: white;
     transition: all 0.2s ease;
-    transform: scale(1.4);
+    transform: scale(1);
 }

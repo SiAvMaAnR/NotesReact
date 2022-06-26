@@ -9,11 +9,12 @@
     justify-content: space-between;
     align-items: center;
     font-family: "Poppins", sans-serif;
+    transition: all 1s ease;
+}
 
-    overflow-x: hidden;
-    overflow-y: hidden;
-
-    height: auto;
+.container.doned {
+    transition: all 1s ease;
+    background: linear-gradient(45deg,rgb(2, 81, 27), #2e2e2e);;
 }
 
 .container.remove {
@@ -28,20 +29,30 @@
 }
 
 .container > .done,
+.container > .more,
+.container > .favorite,
 .container > .delete {
     flex: 0 0;
     padding: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 
+.container > .more:hover,
+.container > .favorite:hover,
 .container > .delete:hover {
-    transition: all 0.1s ease;
-    color: rgb(161, 161, 161);
-    transform: scale(0.95);
+    transition: all 0.5s ease;
+    color: white;
 }
 
+.container > .more,
+.container > .favorite,
 .container > .delete {
     cursor: pointer;
+    color: rgb(161, 161, 161);
 }
 
 .container > .content {
@@ -57,14 +68,15 @@
     text-decoration: line-through;
 }
 
-.container > .delete {
-    font-size: 20px;
-}
-
 .container > .content > .top {
     display: flex;
     justify-content: space-between;
+}
+
+.container > .content > .top > .title {
     font-size: 20px;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 
 .container > .content > .top > .date-time {
