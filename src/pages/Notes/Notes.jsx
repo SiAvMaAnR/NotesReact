@@ -33,13 +33,11 @@ const Notes = (props) => {
                 pageSize: page.size,
             })
             .then((response) => {
-                setPage(
-                    (page) => ({
-                        ...page,
-                        notes: response?.data?.totalNotes,
-                        total: response?.data?.totalPages,
-                    })
-                );
+                setPage((page) => ({
+                    ...page,
+                    notes: response?.data?.totalNotes,
+                    total: response?.data?.totalPages,
+                }));
                 setNotes(response?.data?.notes);
             })
             .catch((error) => {
@@ -64,20 +62,21 @@ const Notes = (props) => {
                     <div>To-Do</div>
                 </div>
 
-                {notes.map((note) => (
-                    <Note
-                        key={note.id}
-                        id={note.id}
-                        title={note.title}
-                        description={note.description}
-                        isDone={note.isDone}
-                        createDate={new Date(note.createDate)}
-                        eventDate={new Date(note.eventDate)}
-                        updateTasks={updateTasks}
-                        updateTasksTimeout={updateTasksTimeout}
-                    />
-                ))}
-                <div className={styles["notes-container"]}></div>
+                <div className={styles["content"]}>
+                    {notes.map((note) => (
+                        <Note
+                            key={note.id}
+                            id={note.id}
+                            title={note.title}
+                            description={note.description}
+                            isDone={note.isDone}
+                            createDate={new Date(note.createDate)}
+                            eventDate={new Date(note.eventDate)}
+                            updateTasks={updateTasks}
+                            updateTasksTimeout={updateTasksTimeout}
+                        />
+                    ))}
+                </div>
             </div>
 
             <div className={styles["note-add"]}>

@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.notes > .content{
+    
+}
+
 .note-add {
     background: #303030;
     flex: 0 0 400px;

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Poppins&family=Roboto&display=swap");
-
 .container {
     background: #2e2e2e;
     color: #c6c6c6;
@@ -47,7 +46,7 @@
 
 .container > .content {
     flex: 1 1;
-    margin: 0 25px;
+    margin: 0 15px;
 
     display: flex;
     flex-direction: column;
@@ -65,4 +64,29 @@
 .container > .content > .top {
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+}
+
+.container > .content > .top > .date-time {
+    border: 0.2px solid rgb(161, 161, 161);
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 1px 5px;
+    margin: auto 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.container > .content > .top > .date-time:hover {
+    border-color: #c6c6c6;
+}
+
+.container > .content > .bottom {
+    font-size: 14px;
+}
+
+.container > .content > .bottom > .description {
+    word-break: break-word;
+    word-wrap: break-word;
 }

@@ -7,13 +7,7 @@
     border-radius: 50%;
     cursor: pointer;
     user-select: none;
-    transition: all 10s ease;
-}
-
-.checkbox:hover {
-    border: 1.8px solid #4067b7;
     transition: all 0.5s ease;
-
 }
 
 .checkbox > .active {
@@ -25,10 +19,17 @@
     background: #c6c6c6;
 
     border-radius: 50%;
+    transition: all 0.5s ease;
 }
 
-.checkbox:hover > .active{
-    background: rgb(161, 161, 161);
-    transition: all 1s ease;
+.checkbox:hover {
+    border: 1.8px solid rgb(161, 161, 161);
+    transition: all 0.2s ease;
+    transform: scale(0.95);
+}
 
+.checkbox:hover > .active {
+    background: rgb(161, 161, 161);
+    transition: all 0.2s ease;
+    transform: scale(1.4);
 }

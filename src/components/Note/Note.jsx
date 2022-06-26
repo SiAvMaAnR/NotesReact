@@ -12,6 +12,7 @@ const Note = (props) => {
     const [isRemove, setIsRemove] = useState(false);
 
     const remove = isRemove ? " " + styles["remove"] : "";
+    const doned = isDoned ? " " + styles["doned"] : "";
 
     const checkboxHandler = () => {
         const checked = !isDoned;
@@ -38,35 +39,40 @@ const Note = (props) => {
     };
 
     return (
-        <div className={styles["container"] + remove}>
-            <div className={styles["done"]}>
-                <CheckBox
-                    isChecked={isDoned}
-                    checkboxHandler={checkboxHandler}
-                />
-            </div>
+        <div>
+            <div className={styles["container"] + remove + doned}>
+                <div className={styles["done"]}>
+                    <CheckBox
+                        isChecked={isDoned}
+                        checkboxHandler={checkboxHandler}
+                    />
+                </div>
 
-            <div className={styles["content"] + (isDoned ? " doned" : "")}>
-                <div className={styles["top"]}>
-                    <div className={styles["title"]}>{props.title}</div>
-                    <div className={styles["date-time"]}>
-                        <div>
-                            {`${moment(props.eventDate).format(
-                                "ddd, MMM D, HH:mm"
-                            )}`}
+                <div className={styles["content"] + (isDoned ? " doned" : "")}>
+                    <div className={styles["top"]}>
+                        <div className={styles["title"]}>{props.title}</div>
+                        <div className={styles["date-time"]}>
+                            <div>
+                                {`${moment(props.eventDate).format(
+                                    "ddd, MMM D, HH:mm"
+                                )}`}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles["bottom"]}>
+                        <div className={styles["description"]}>
+                            {props.description}
                         </div>
                     </div>
                 </div>
 
-                <div className={styles["bottom"]}>
-                    <div className={styles["description"]}>
-                        {props.description}
-                    </div>
+                <div
+                    className={styles["delete"]}
+                    onClick={() => deleteHandler()}
+                >
+                    <i className="bx bx-trash"></i>
                 </div>
-            </div>
-
-            <div className={styles["delete"]} onClick={() => deleteHandler()}>
-                <i className="bx bx-trash"></i>
             </div>
         </div>
     );
