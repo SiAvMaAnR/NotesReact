@@ -10,9 +10,13 @@ const Note = (props) => {
     const [token, setToken] = useContext(TokenContext);
     const [isDoned, setIsDoned] = useState(props["isDone"]);
     const [isRemove, setIsRemove] = useState(false);
+    const [isOpenDesc, setIsOpenDesc] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
-    const remove = isRemove ? " " + styles["remove"] : "";
-    const doned = isDoned ? " " + styles["doned"] : "";
+    const removed = isRemove ? " " + styles["removed-active"] : "";
+    const doned = isDoned ? " " + styles["doned-active"] : "";
+    const opened = isOpenDesc ? " " + styles["opened-active"] : "";
+    const favorite = isFavorite ? " " + styles["favorite-active"] : "";
 
     const checkboxHandler = () => {
         const checked = !isDoned;
@@ -39,16 +43,20 @@ const Note = (props) => {
     };
 
     const moreHandler = () => {
-        console.log("more");
+        setIsOpenDesc((open) => !open);
     };
 
-    const favoriteHandler = () =>{
-        console.log("favorite");
-    }
+    const favoriteHandler = () => {
+        setIsFavorite((favorite) => !favorite);
+    };
 
     return (
         <div>
-            <div className={styles["container"] + remove + doned}>
+            <div
+                className={
+                    styles["container"] + removed + doned + opened + favorite
+                }
+            >
                 <div className={styles["done"]}>
                     <CheckBox
                         isChecked={isDoned}
@@ -56,7 +64,7 @@ const Note = (props) => {
                     />
                 </div>
 
-                <div className={styles["content"] + (isDoned ? " doned" : "")}>
+                <div className={styles["content"]}>
                     <div className={styles["top"]}>
                         <div className={styles["title"]}>{props.title}</div>
                         <div className={styles["date-time"]}>
@@ -79,7 +87,10 @@ const Note = (props) => {
                     <i className="bx bx-down-arrow"></i>
                 </div>
 
-                <div className={styles["favorite"]} onClick={() => favoriteHandler()}>
+                <div
+                    className={styles["favorite"]}
+                    onClick={() => favoriteHandler()}
+                >
                     <i className="bx bx-heart"></i>
                 </div>
 

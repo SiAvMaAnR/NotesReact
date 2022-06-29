@@ -9,15 +9,25 @@
     justify-content: space-between;
     align-items: center;
     font-family: "Poppins", sans-serif;
+
     transition: all 1s ease;
 }
 
-.container.doned {
-    transition: all 1s ease;
-    background: linear-gradient(45deg,rgb(2, 81, 27), #2e2e2e);;
+.container.doned-active {
+    background: linear-gradient(45deg, rgb(2, 81, 27), #2e2e2e);
+    animation: gradient 1s ease;
 }
 
-.container.remove {
+@keyframes gradient {
+    from {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container.removed-active {
     transition: all 1s ease;
     background: red;
     transform: translateX(-1000px);
@@ -28,23 +38,23 @@
     display: none;
 }
 
-.container > .done,
+.container > .doned,
 .container > .more,
 .container > .favorite,
 .container > .delete {
     flex: 0 0;
     padding: 10px;
-    transition: all 0.5s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
+    transition: all 0.5s ease;
 }
 
 .container > .more:hover,
 .container > .favorite:hover,
 .container > .delete:hover {
-    transition: all 0.5s ease;
+    transition: all 0.2s ease;
     color: white;
 }
 
@@ -55,22 +65,37 @@
     color: rgb(161, 161, 161);
 }
 
+.container.favorite-active > .favorite {
+    transform: rotateY(180deg);
+    transition: all 1s ease;
+    color: white;
+}
+
+.container.opened-active > .more {
+    transform: rotate(-180deg);
+    transition: all 1s ease;
+    color: white;
+}
+
 .container > .content {
     flex: 1 1;
     margin: 0 15px;
 
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     user-select: none;
+    overflow: hidden;
 }
 
-.container > .content.doned {
-    text-decoration: line-through;
+.container.doned-active > .content {
+    /* text-decoration: line-through; */
 }
 
 .container > .content > .top {
     display: flex;
     justify-content: space-between;
+    /*  */
+    flex: 1 0 100%;
 }
 
 .container > .content > .top > .title {
@@ -96,6 +121,14 @@
 
 .container > .content > .bottom {
     font-size: 14px;
+    transition: all 1s ease;
+    height: 0px;
+    overflow: hidden;
+}
+
+.container.opened-active > .content > .bottom {
+    transition: all 1s ease;
+    height: 150px;
 }
 
 .container > .content > .bottom > .description {
