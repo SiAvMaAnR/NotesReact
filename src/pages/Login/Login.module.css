@@ -20,8 +20,8 @@
     flex: 0 1 500px;
     height: 600px;
     border-radius: 15px;
-    background: linear-gradient(135deg, #11324f 0%, rgb(1, 1, 15) 40%);
-    /* box-shadow: 0 0 1px 1px #383838; */
+    box-shadow: 0 0 2px 2px #4d4d4d;
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +57,7 @@
 
 .page .btn-login-container .btn-login {
     color: #d8d8d8;
-    background: linear-gradient(150deg, #0e41da 30%, #0b1636 100%);
+    background: #0c34ae;
     opacity: 0.95;
 }
 
