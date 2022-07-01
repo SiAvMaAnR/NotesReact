@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+}
+
+.container > .header {
+    font-size: 24px;
+    color: white;
+    flex: 0 1 80px;
+    border-bottom: #3e3e3e solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > .functional {
+    flex: 1 1;
+}

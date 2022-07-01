@@ -2,9 +2,12 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
+    scroll-behavior: smooth;
 }
 
 .notes {
+    min-width: 600px;
+
     background: #1e1e1e;
     flex: 1 1;
     padding: 0 15px;
@@ -17,11 +20,7 @@
     text-align: center;
 }
 
-.notes > .content{
-    
-}
-
-.note-add {
+.note-func {
     background: #303030;
     flex: 0 0 400px;
     border: #3e3e3e solid 1.5px;

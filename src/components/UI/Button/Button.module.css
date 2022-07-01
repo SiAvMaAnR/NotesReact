@@ -11,30 +11,22 @@
     min-height: 50px;
     font-family: "Poppins", sans-serif;
     transition: all 0.5s ease;
-}
-
-.container > button.white {
-    background: white;
-    color: rgb(59, 59, 59);
-    box-shadow: 0 0 3px 1px rgba(168, 168, 168, 0.9);
-}
-
-.container > button.blue {
-    background: #4d7edf;
-    color: white;
-}
-
-.container > button:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.4s ease;
-    font-size: 17px;
 }
 
-.container > button.white:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.9);
+.container > button > i {
+    animation: loading infinite 0.4s linear;
+    font-size: 28px;
 }
 
-.container > button.blue:hover {
-    background: #4067b7;
+@keyframes loading {
+    50% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

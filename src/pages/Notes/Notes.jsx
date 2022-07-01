@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../../api";
 import Note from "../../components/Note/Note";
 import NoteAdd from "../../components/NoteAdd/NoteAdd";
+import NotesFunc from "../../components/NotesFunc/NotesFunc";
 import { useToken } from "../../hooks";
 import styles from "./Notes.module.css";
 
@@ -16,6 +17,7 @@ const Notes = (props) => {
         size: 100,
         notes: 0,
         total: 0,
+        sort: "desc_date",
     });
 
     const [notes, setNotes] = useState([]);
@@ -31,6 +33,7 @@ const Notes = (props) => {
                 token: token,
                 pageNumber: page.number,
                 pageSize: page.size,
+                sort: page.sort,
             })
             .then((response) => {
                 setPage((page) => ({
@@ -79,8 +82,10 @@ const Notes = (props) => {
                 </div>
             </div>
 
-            <div className={styles["note-add"]}>
-                <NoteAdd updateTasks={updateTasks} token={token} />
+            <div className={styles["note-func"]}>
+                <NotesFunc>
+                    <NoteAdd updateTasks={updateTasks} token={token} />
+                </NotesFunc>
             </div>
         </div>
     );

@@ -11,6 +11,16 @@
     font-family: "Poppins", sans-serif;
 
     transition: all 1s ease;
+    animation: new-note 1s ease;
+}
+
+@keyframes new-note {
+    from {
+        background: rgb(2, 81, 27);
+    }
+    to {
+        background: #2e2e2e;
+    }
 }
 
 .container.doned-active {
@@ -94,8 +104,6 @@
 .container > .content > .top {
     display: flex;
     justify-content: space-between;
-    /*  */
-    flex: 1 0 100%;
 }
 
 .container > .content > .top > .title {
@@ -113,6 +121,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .container > .content > .top > .date-time:hover {
@@ -121,14 +130,15 @@
 
 .container > .content > .bottom {
     font-size: 14px;
-    transition: all 1s ease;
-    height: 0px;
+    transition: all 0.5s ease;
+    max-height: 0px;
     overflow: hidden;
 }
 
 .container.opened-active > .content > .bottom {
-    transition: all 1s ease;
-    height: 150px;
+    transition: all 2s ease;
+    height: auto;
+    max-height: 400px;
 }
 
 .container > .content > .bottom > .description {

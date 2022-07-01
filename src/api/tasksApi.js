@@ -30,7 +30,7 @@ export const tasksApi = {
       }
     }
 
-    return axios.get(`http://localhost:8080/api/Note?PageNumber=${params['pageNumber']}&PageSize=${params['pageSize']}`, config)
+    return axios.get(`http://localhost:8080/api/Note?PageNumber=${params['pageNumber']}&PageSize=${params['pageSize']}&Sort=${params['sort']}`, config)
       .then(response => response.data)
       .catch(error => null)
   },

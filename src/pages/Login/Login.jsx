@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../../api/index";
 import Input from "../../components/UI/Input/Input";
 import { AuthContext, TokenContext } from "../../App";
-import style from "../Login/Login.module.css";
+import styles from "../Login/Login.module.css";
 import Button from "../../components/UI/Button/Button";
 
 const Login = (props) => {
@@ -17,9 +17,11 @@ const Login = (props) => {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [commonError, setCommonError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const loginHandler = async () => {
         if (!emailError && !passwordError) {
+            setLoading(true);
             const response = await accountApi.login({
                 email: email,
                 password: password,
@@ -29,6 +31,7 @@ const Login = (props) => {
                 login(response.data.token);
             } else {
                 setCommonError("email or password incorrect");
+                setLoading(false);
             }
         }
     };
@@ -66,17 +69,23 @@ const Login = (props) => {
     };
 
     return (
-        <div className={style["page"]}>
-            <div className={style["authorize"]}>
-                <div className={style["common-error"]}>
-                    <div className={style["common-error-text"]}>
+        <div className={styles["page"]}>
+            <div className={styles["authorize"]}>
+                <div className={styles["header"]}>
+                    To-Do
+                </div>
+
+
+                <div className={styles["common-error"]}>
+                    <div className={styles["common-error-text"]}>
                         {commonError}
                     </div>
                 </div>
 
-                <div className={style["input-container"]}>
-                    <div className={style["input-text"]}>{emailError}</div>
+                <div className={styles["input-container"]}>
+                    <div className={styles["input-text"]}>{emailError}</div>
                     <Input
+                        className={styles["input"]}
                         placeholder="email"
                         onChange={(e) => emailChangeHandler(e)}
                         value={email}
@@ -84,9 +93,10 @@ const Login = (props) => {
                     />
                 </div>
 
-                <div className={style["input-container"]}>
-                    <div className={style["input-text"]}>{passwordError}</div>
+                <div className={styles["input-container"]}>
+                    <div className={styles["input-text"]}>{passwordError}</div>
                     <Input
+                        className={styles["input"]}
                         placeholder="password"
                         onChange={(e) => passwordChangeHandler(e)}
                         value={password}
@@ -94,14 +104,24 @@ const Login = (props) => {
                     />
                 </div>
 
-                <div className={style["btn-login-container"]}>
-                    <Button classStyle="blue" onClick={() => loginHandler()}>
-                        Sign in
+                <div className={styles["btn-login-container"]}>
+                    <Button
+                        className={styles["btn-login"]}
+                        onClick={() => loginHandler()}
+                    >
+                        {loading ? (
+                            <i className="bx bx-loader-alt"></i>
+                        ) : (
+                            "Sign in"
+                        )}
                     </Button>
                 </div>
 
-                <div className={style["btn-register-container"]}>
-                    <Button classStyle="white" onClick={() => registerHandler()}>
+                <div className={styles["btn-register-container"]}>
+                    <Button
+                        className={styles["btn-register"]}
+                        onClick={() => registerHandler()}
+                    >
                         Create new account
                     </Button>
                 </div>

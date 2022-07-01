@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "../UI/Input/Input";
 import DateTimeInput from "../UI/DateTimeInput/DateTimeInput";
+import TextArea from "../UI/TextArea/TextArea";
 import Button from "../UI/Button/Button";
 import { tasksApi } from "../../api";
 import styles from "./NoteAdd.module.css";
@@ -46,21 +47,20 @@ const NoteAdd = (props) => {
         <div className={styles["container"]}>
             <div>
                 <Input
-                    style={{ width: "300px" }}
-                    placeholder="title"
+                    className={styles["title-input"]}
+                    placeholder="Enter title"
                     onChange={(e) => titleChangeHandler(e)}
                     value={title}
                     type="text"
+                    maxlength={100}
                 />
             </div>
 
             <div>
-                <Input
-                    style={{ width: "300px" }}
-                    placeholder="description"
+                <TextArea
                     onChange={(e) => descriptionChangeHandler(e)}
                     value={description}
-                    type="text"
+                    maxlength={1000}
                 />
             </div>
 
@@ -76,8 +76,6 @@ const NoteAdd = (props) => {
                     Addition
                 </Button>
             </div>
-
-            <div></div>
         </div>
     );
 };
