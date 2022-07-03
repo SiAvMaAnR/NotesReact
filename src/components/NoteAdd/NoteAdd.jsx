@@ -5,6 +5,7 @@ import TextArea from "../UI/TextArea/TextArea";
 import Button from "../UI/Button/Button";
 import { tasksApi } from "../../api";
 import styles from "./NoteAdd.module.css";
+import moment from "moment";
 
 const NoteAdd = (props) => {
     const [title, setTitle] = useState("");
@@ -45,7 +46,7 @@ const NoteAdd = (props) => {
 
     return (
         <div className={styles["container"]}>
-            <div className={styles['a']}>
+            <div>
                 <Input
                     className={styles["title-input"]}
                     placeholder="Enter title"
@@ -56,7 +57,7 @@ const NoteAdd = (props) => {
                 />
             </div>
 
-            <div className={styles['a']}>
+            <div>
                 <TextArea
                     className={styles["desc-textarea"]}
                     placeholder="Description"
@@ -70,18 +71,27 @@ const NoteAdd = (props) => {
             <div className={styles["datetime"]}>
                 <div className={styles["icon"]}>
                     <DateTimeInput
+                        min={moment(new Date()).format("YYYY-MM-DDThh:mm")}
                         className={styles["date-input"]}
                         value={eventDate}
                         onChange={(e) => dateChangeHandler(e)}
                     />
                 </div>
 
-                <div className={styles["content"]} data-placeholder="ENter date">{eventDate}</div>
+                <div
+                    className={styles["content"]}
+                    data-placeholder="Select date and time"
+                >
+                    {eventDate && moment(eventDate).format("DD.MM.YYYY HH:mm")}
+                </div>
             </div>
 
             <div>
-                <Button classStyle="blue" onClick={(e) => clickHandler(e)}>
-                    Addition
+                <Button
+                    className={styles["button"]}
+                    onClick={(e) => clickHandler(e)}
+                >
+                    Add note
                 </Button>
             </div>
         </div>
