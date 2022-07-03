@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const TextArea = (props) => {
     return (
-        <div className="container">
+        <div className={styles["container"]}>
             <textarea {...props} />
         </div>
     );

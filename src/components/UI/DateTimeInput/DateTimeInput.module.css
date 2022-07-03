@@ -1,0 +1,22 @@
+.container {
+}
+
+.container > input {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 26px;
+}
+
+.container > input::-webkit-datetime-edit {
+    display: none;
+}
+
+.container > input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

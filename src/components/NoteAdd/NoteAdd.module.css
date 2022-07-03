@@ -5,25 +5,88 @@
     padding: 30px 0px;
 }
 
-.container div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container > div {
+   w
     width: 100%;
 }
 
-.container div .title-input {
+.container div .title-input,
+.container div .desc-textarea {
     width: 95%;
     border: solid 1px transparent;
     color: #989898;
     background: #464646;
     font-size: 20px;
-    padding-left: 20px;
 }
 
-.container div .title-input:focus {
+.container div .title-input {
+    font-size: 20px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.container div .desc-textarea {
+    resize: none;
+    font-size: 16px;
+    padding: 5px 20px;
+    margin-bottom: 15px;
+}
+
+.container div .title-input:focus,
+.container div .desc-textarea:focus {
     background: #343434;
     color: #c5c5c5;
     border-color: #3e3e3e;
     transition: all 0.3s ease;
+}
+
+.container .datetime {
+    width: 95%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    color: #989898;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.container .datetime .icon {
+    transition: all 0.3s ease;
+    flex: 0 1;
+    background: transparent;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.container .datetime .content {
+    height: 40px;
+    flex: 1 1;
+    font-size: 16px;
+    background: #464646;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.container .datetime .icon:hover {
+    transition: all 0.3s ease;
+    background: #3c3c3c;
+}
+
+.container .datetime .icon .date-input {
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px transparent;
+}
+
+.container .datetime .icon .date-input:focus {
+    border-color: #3e3e3e;
+    outline: none;
+}
+
+.container .datetime .content:empty:before {
+    content: attr(data-placeholder);
+    color: white;
+
 }

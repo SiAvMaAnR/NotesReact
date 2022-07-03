@@ -18,4 +18,13 @@ export const tokenService = {
             return undefined;
         }
     },
+
+    timeLeft: (lifeTime) => {
+        try {
+            return lifeTime - Date.now();
+        }
+        catch (error) {
+            return undefined;
+        }
+    }
 }

@@ -18,7 +18,6 @@ const Button = ({ style, className, onClick, children }) => {
 
 Button.propTypes = {
     style: PropTypes.object,
-    children: PropTypes.string,
     onClick: PropTypes.func,
 };
 

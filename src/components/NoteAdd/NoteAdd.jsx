@@ -45,30 +45,38 @@ const NoteAdd = (props) => {
 
     return (
         <div className={styles["container"]}>
-            <div>
+            <div className={styles['a']}>
                 <Input
                     className={styles["title-input"]}
                     placeholder="Enter title"
                     onChange={(e) => titleChangeHandler(e)}
                     value={title}
                     type="text"
-                    maxlength={100}
+                    maxLength={100}
                 />
             </div>
 
-            <div>
+            <div className={styles['a']}>
                 <TextArea
+                    className={styles["desc-textarea"]}
+                    placeholder="Description"
+                    rows={4}
                     onChange={(e) => descriptionChangeHandler(e)}
                     value={description}
-                    maxlength={1000}
+                    maxLength={1000}
                 />
             </div>
 
-            <div>
-                <DateTimeInput
-                    value={eventDate}
-                    onChange={(e) => dateChangeHandler(e)}
-                />
+            <div className={styles["datetime"]}>
+                <div className={styles["icon"]}>
+                    <DateTimeInput
+                        className={styles["date-input"]}
+                        value={eventDate}
+                        onChange={(e) => dateChangeHandler(e)}
+                    />
+                </div>
+
+                <div className={styles["content"]} data-placeholder="ENter date">{eventDate}</div>
             </div>
 
             <div>

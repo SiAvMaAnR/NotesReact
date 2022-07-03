@@ -20,7 +20,7 @@
     flex: 0 1 500px;
     height: 600px;
     border-radius: 15px;
-    box-shadow: 0 0 2px 2px #4d4d4d;
+    box-shadow: 0 0 2px 1px #a9a9a9;
     background: transparent;
     display: flex;
     flex-direction: column;

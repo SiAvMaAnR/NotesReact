@@ -3,7 +3,7 @@ import styles from "./DateTimeInput.module.css";
 
 const DateTimeInput = (props) => {
     return (
-        <div>
+        <div className={styles["container"]}>
             <input {...props} type="datetime-local" />
         </div>
     );

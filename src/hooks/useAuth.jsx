@@ -7,13 +7,16 @@ const useAuth = (props) => {
 
     useEffect(() => {
         let exp = tokenService.getExpirationDate(token);
-        let isExpired = tokenService.isExpired(exp);
 
-        if (isExpired) {
+        const timeLeft = tokenService.timeLeft(exp);
+
+        const verifyTokenTimeout = setTimeout(() => {
             logout();
-        }
+        }, timeLeft);
 
         setIsLogged(!!token);
+
+        return () => clearTimeout(verifyTokenTimeout);
     }, [token]);
 
     const login = (newToken) => {

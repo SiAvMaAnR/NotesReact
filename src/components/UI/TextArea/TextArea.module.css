@@ -1,3 +1,23 @@
-.container{
-    
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Poppins&family=Roboto&display=swap");
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container > textarea {
+    width: 280px;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 8px 15px;
+    background: #f7f5f7;
+    border: 2px solid rgba(221, 224, 231, 1);
+    font-family: "Poppins", sans-serif;
+}
+
+.container > textarea:focus {
+    background: rgba(228, 236, 250, 1);
+    outline: none !important;
 }
