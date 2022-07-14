@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState, useCallback } from "react";
+import React, { useContext, useState } from "react";
 import { tasksApi } from "../../api";
 import { TokenContext } from "../../App";
 import CheckBox from "../UI/CheckBox/CheckBox";
 import styles from "./Note.module.css";
 import moment from "moment";
-import { useRef } from "react";
 
 const Note = (props) => {
     const [token, setToken] = useContext(TokenContext);
     const [isDoned, setIsDoned] = useState(props["isDone"]);
     const [isRemove, setIsRemove] = useState(false);
     const [isOpenDesc, setIsOpenDesc] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(props["isFavorite"]);
 
     const removed = isRemove ? " " + styles["removed-active"] : "";
     const doned = isDoned ? " " + styles["doned-active"] : "";
@@ -23,9 +22,25 @@ const Note = (props) => {
 
         setIsDoned(checked);
 
-        tasksApi.setIsDoneTask({
+        tasksApi.setIsDonedTask({
             id: props["id"],
             isDone: checked,
+            token: token,
+        });
+    };
+
+    const moreHandler = () => {
+        setIsOpenDesc((open) => !open);
+    };
+
+    const favoriteHandler = () => {
+        const favorite = !isFavorite;
+
+        setIsFavorite(favorite);
+
+        tasksApi.setIsFavoriteTask({
+            id: props["id"],
+            isFavorite: favorite,
             token: token,
         });
     };
@@ -40,14 +55,6 @@ const Note = (props) => {
 
         setIsRemove(remove);
         props.updateTasksTimeout();
-    };
-
-    const moreHandler = () => {
-        setIsOpenDesc((open) => !open);
-    };
-
-    const favoriteHandler = () => {
-        setIsFavorite((favorite) => !favorite);
     };
 
     return (

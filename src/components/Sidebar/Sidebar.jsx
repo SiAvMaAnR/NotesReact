@@ -48,7 +48,7 @@ const Sidebar = (props) => {
                         <i className="bx bx-task"></i>
                     </SidebarLink>
 
-                    <SidebarLink to="/Home" title="Favorites" styles={styles}>
+                    <SidebarLink to="/Notes/Favorite" title="Favorites" styles={styles}>
                         <i className="bx bx-heart"></i>
                     </SidebarLink>
 

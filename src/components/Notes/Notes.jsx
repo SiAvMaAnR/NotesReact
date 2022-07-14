@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { accountApi, tasksApi } from "../../api";
-import Note from "../../components/Note/Note";
-import NoteAdd from "../../components/NoteAdd/NoteAdd";
-import NotesFunc from "../../components/NotesFunc/NotesFunc";
+import Note from "../Note/Note";
+import NoteAdd from "../NoteAdd/NoteAdd";
+import NotesFunc from "../NotesFunc/NotesFunc";
+import NotesHeader from "../NotesHeader/NotesHeader";
 import { useToken } from "../../hooks";
 import styles from "./Notes.module.css";
 
@@ -28,8 +27,8 @@ const Notes = (props) => {
     }, []);
 
     const updateTasks = () => {
-        tasksApi
-            .getAllTasks({
+        props
+            .getTasks({
                 token: token,
                 pageNumber: page.number,
                 pageSize: page.size,
@@ -62,7 +61,7 @@ const Notes = (props) => {
         <div className={styles["page"]}>
             <div className={styles["notes"]}>
                 <div className={styles["header"]}>
-                    <div>To-Do</div>
+                    <NotesHeader />
                 </div>
 
                 <div className={styles["content"]}>
@@ -73,6 +72,7 @@ const Notes = (props) => {
                             title={note.title}
                             description={note.description}
                             isDone={note.isDone}
+                            isFavorite={note.isFavorite}
                             createDate={new Date(note.createDate)}
                             eventDate={new Date(note.eventDate)}
                             updateTasks={updateTasks}

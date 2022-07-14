@@ -100,7 +100,7 @@
 }
 
 .container div .button {
-    background: #343434;
+    background: #464646;
     color: #c5c5c5;
     border: solid 1px #3e3e3e ;
     width: 95%;
@@ -108,15 +108,18 @@
 
 .container div .button:hover {
     border-color: #8f8f8f;
-    /* animation: att linear 5s; */
-    background: linear-gradient(90deg, red 33%, blue 33%, green 33%);
-
+    animation: slide ease 1s forwards;
+    background: linear-gradient(90deg,#3c3c3c  0% 58%,  #464646 62% 100%);
+    background-size: 300% 100%;
 }
 
 
-@keyframes att{
-    
-    100%{
-        background-position: 200px 200px;
-    }
+@keyframes slide{
+    0% {
+		background-position: 100% 0%;
+	}
+	100% {
+		background-position: 0% 100%;
+        color: white;
+	}
 }

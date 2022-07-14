@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+}
+
+.container > .brand {
+    cursor: pointer;
+}
+
+.container > .more {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.container > .more:hover {
+    transition: all 0.5s ease;
+    background: #303030;
+}
+
+.container > .more > i {
+}

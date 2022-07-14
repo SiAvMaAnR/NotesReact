@@ -9,7 +9,7 @@
     color: rgb(219, 219, 219);
     position: sticky;
     top: 0;
-    background-color: #11101d;
+    background: rgb(20, 19, 26);
     flex: 0 0 70px;
     overflow: hidden;
     z-index: 999;

@@ -42,6 +42,10 @@ const NoteAdd = (props) => {
             .catch((error) => {
                 console.log(error.message);
             });
+
+            setTitle("");
+            setDescription("");
+            setEventDate("");
     }
 
     return (

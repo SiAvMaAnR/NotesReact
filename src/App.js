@@ -1,9 +1,10 @@
 import Sidebar from "./components/Sidebar/Sidebar";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
-import { Login, Register, Home, Notes, Test } from "../src/pages/Index";
-import { useEffect, useMemo, useState, createContext } from "react";
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Login, Register, Home, AllNotes, FavoriteNotes, Test } from "../src/pages/Index";
+import { createContext } from "react";
 import { useToken, useAuth, useUser } from "./hooks/index";
+import './App.css';
+
 
 const TokenContext = createContext();
 const AuthContext = createContext();
@@ -32,9 +33,10 @@ function App() {
 
                   <Routes>
                     <Route path="/Home" element={<Home />} />
-                    <Route exact path="/Notes" element={<Notes />} />
+                    <Route exact path="/Notes" element={<AllNotes/>} />
+                    <Route exact path="/Notes/Favorite" element={<FavoriteNotes />} />
                     <Route exact path="/Test" element={<Test />} />
-                    <Route path="/*" element={<Home />} />
+                    <Route path="/*" element={<AllNotes />} />
                   </Routes>
                 </Sidebar>
                 :
@@ -43,7 +45,6 @@ function App() {
                   <Route path="/*" element={<Login />} />
                 </Routes>
               }
-
             </div>
           </BrowserRouter>
         </UserContext.Provider>
