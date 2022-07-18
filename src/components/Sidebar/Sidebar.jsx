@@ -1,23 +1,33 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import "/node_modules/boxicons/css/boxicons.css";
-import img from "../../styles/wallhaven-477pv4.jpg";
 import SidebarLink from "../SidebarLink/SidebarLink";
 import SidebarSearch from "../SidebarSearch/SidebarSearch";
 import { AuthContext, UserContext } from "../../App";
+import { useCallback } from "react";
+import { useMemo } from "react";
 
 const Sidebar = (props) => {
     const [isActive, setIsActive] = useState(false);
-
     const [isLogged, login, logout] = useContext(AuthContext);
     const [user] = useContext(UserContext);
+    const image = useMemo(() => user.image, [user]);
+    const active = useMemo(
+        () => (isActive ? " " + styles["active"] : ""),
+        [isActive]
+    );
+    const sourceImage = useMemo(
+        () => "data:image/png;base64," + image,
+        [image]
+    );
 
-    let active = isActive ? " " + styles["active"] : "";
-
-    const logoutHandler = () => {
+    const logoutHandler = useCallback(() => {
         logout();
-    };
+    }, [logout]);
+
+    const activeHandler = useCallback(() => {
+        setIsActive((x) => !x);
+    }, []);
 
     return (
         <div className={styles["page"]}>
@@ -32,10 +42,7 @@ const Sidebar = (props) => {
                         </div>
                     </div>
                     <div className={styles["sidebar-btn"]}>
-                        <i
-                            className="bx bx-menu"
-                            onClick={() => setIsActive((x) => !x)}
-                        ></i>
+                        <i className="bx bx-menu" onClick={activeHandler}></i>
                     </div>
                 </div>
 
@@ -48,7 +55,11 @@ const Sidebar = (props) => {
                         <i className="bx bx-task"></i>
                     </SidebarLink>
 
-                    <SidebarLink to="/Notes/Favorite" title="Favorites" styles={styles}>
+                    <SidebarLink
+                        to="/Notes/Favorite"
+                        title="Favorites"
+                        styles={styles}
+                    >
                         <i className="bx bx-heart"></i>
                     </SidebarLink>
 
@@ -63,16 +74,13 @@ const Sidebar = (props) => {
 
                 <div className={styles["sidebar-account"]}>
                     <div className={styles["image"]}>
-                        <img src={img} alt="person" />
+                        {image && <img src={sourceImage} alt="person" />}
                     </div>
                     <div className={styles["info"]}>
                         <div className={styles["name"]}>{props.login}</div>
                         <div className={styles["status"]}>{props.role}</div>
                     </div>
-                    <div
-                        className={styles["logout"]}
-                        onClick={() => logoutHandler()}
-                    >
+                    <div className={styles["logout"]} onClick={logoutHandler}>
                         <i className="bx bx-log-out-circle"></i>
                     </div>
                 </div>

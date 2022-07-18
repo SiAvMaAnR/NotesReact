@@ -1,9 +1,9 @@
 import React from "react";
-import Notes from "../../components/Notes/Notes";
-import { tasksApi } from "../../api/tasksApi";
+import NotesArea from "../../components/NotesArea/NotesArea";
+import { notesApi } from "../../api/notesApi";
 
 const FavoriteNotes = (props) => {
-    return <Notes getTasks={tasksApi.getFavoriteTasks}/>;
+    return <NotesArea getTasks={notesApi.getFavoriteNotes} />;
 };
 
 export default FavoriteNotes;

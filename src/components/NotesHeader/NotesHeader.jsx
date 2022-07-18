@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./NotesHeader.module.css";
 
 const NotesHeader = () => {
@@ -12,4 +12,4 @@ const NotesHeader = () => {
     );
 };
 
-export default NotesHeader;
+export default memo(NotesHeader);

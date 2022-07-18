@@ -1,52 +1,57 @@
-import React, { useState } from "react";
+import React, { memo, useState, useCallback } from "react";
 import Input from "../UI/Input/Input";
 import DateTimeInput from "../UI/DateTimeInput/DateTimeInput";
 import TextArea from "../UI/TextArea/TextArea";
 import Button from "../UI/Button/Button";
-import { tasksApi } from "../../api";
+import { notesApi } from "../../api";
 import styles from "./NoteAdd.module.css";
 import moment from "moment";
 
-const NoteAdd = (props) => {
+const NoteAdd = ({ token, updateTasks }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [eventDate, setEventDate] = useState("");
+    const isFavorite = true;
     const isDone = false;
 
-    function titleChangeHandler(event) {
+    const titleChangeHandler = useCallback((event) => {
+        console.log('title');
         setTitle(event.target.value);
-    }
+    }, []);
 
-    function descriptionChangeHandler(event) {
+    const descriptionChangeHandler = useCallback((event) => {
+        console.log('desc');
         setDescription(event.target.value);
-    }
+    }, []);
 
-    function dateChangeHandler(event) {
+    const dateChangeHandler = useCallback((event) => {
+        console.log('date');
         setEventDate(event.target.value);
-    }
+    }, []);
 
-    function clickHandler(event) {
-        tasksApi
-            .addTask({
+    const clickHandler = (event) => {
+        notesApi
+            .addNote({
                 title: title,
                 description: description,
                 eventDate: eventDate,
                 isDone: isDone,
-                token: props["token"],
+                isFavorite: isFavorite,
+                token: token,
             })
             .then((response) => {
                 if (response) {
-                    props.updateTasks();
+                    updateTasks();
                 }
             })
             .catch((error) => {
                 console.log(error.message);
             });
 
-            setTitle("");
-            setDescription("");
-            setEventDate("");
-    }
+        setTitle("");
+        setDescription("");
+        setEventDate("");
+    };
 
     return (
         <div className={styles["container"]}>
@@ -54,7 +59,7 @@ const NoteAdd = (props) => {
                 <Input
                     className={styles["title-input"]}
                     placeholder="Enter title"
-                    onChange={(e) => titleChangeHandler(e)}
+                    onChange={titleChangeHandler}
                     value={title}
                     type="text"
                     maxLength={100}
@@ -66,7 +71,7 @@ const NoteAdd = (props) => {
                     className={styles["desc-textarea"]}
                     placeholder="Description"
                     rows={4}
-                    onChange={(e) => descriptionChangeHandler(e)}
+                    onChange={descriptionChangeHandler}
                     value={description}
                     maxLength={1000}
                 />
@@ -78,7 +83,7 @@ const NoteAdd = (props) => {
                         min={moment(new Date()).format("YYYY-MM-DDThh:mm")}
                         className={styles["date-input"]}
                         value={eventDate}
-                        onChange={(e) => dateChangeHandler(e)}
+                        onChange={dateChangeHandler}
                     />
                 </div>
 
@@ -93,7 +98,7 @@ const NoteAdd = (props) => {
             <div>
                 <Button
                     className={styles["button"]}
-                    onClick={(e) => clickHandler(e)}
+                    onClick={clickHandler}
                 >
                     Add note
                 </Button>
@@ -102,4 +107,4 @@ const NoteAdd = (props) => {
     );
 };
 
-export default NoteAdd;
+export default memo(NoteAdd);

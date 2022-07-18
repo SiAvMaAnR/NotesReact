@@ -57,6 +57,7 @@ export const accountApi = {
             login: params['login'],
             firstname: params['firstname'],
             surname: params['surname'],
+            image: params['image'],
             age: params['age']
         };
 

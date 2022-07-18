@@ -14,14 +14,12 @@
     position: absolute;
     height: 50%;
     width: 50%;
-    left: 25%;
     top: 25%;
+    right: 25%;
     background: #c6c6c6;
-
-    transform: scale(1.4);
-
     border-radius: 50%;
     transition: all 0.5s ease;
+    transform: scale(1.4);
 }
 
 .checkbox:hover {

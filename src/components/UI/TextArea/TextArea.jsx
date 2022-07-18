@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./TextArea.module.css";
 import PropTypes from "prop-types";
 
@@ -14,4 +14,4 @@ TextArea.propTypes = {
     props: PropTypes.object,
 };
 
-export default TextArea;
+export default memo(TextArea);

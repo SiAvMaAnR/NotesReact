@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { accountApi, tasksApi } from "../../api/index";
-import useToken from "../../hooks/useToken";
 import { TokenContext, AuthContext, UserContext } from "../../App";
 
 const Test = (props) => {
     const [token, setToken] = useContext(TokenContext);
     const [isLogged, login, logout] = useContext(AuthContext);
     const [user] = useContext(UserContext);
-
-    const navigate = useNavigate();
 
     async function onClick1() {
         let login = await accountApi.login({
@@ -60,6 +56,10 @@ const Test = (props) => {
         console.log(user);
     }
 
+    function onClick9() {
+        console.log(user.image);
+    }
+
     return (
         <div>
             <div>
@@ -71,6 +71,7 @@ const Test = (props) => {
                 <button onClick={() => onClick6()}>isLogged</button>
                 <button onClick={() => onClick7()}>logout</button>
                 <button onClick={() => onClick8()}>user</button>
+                <button onClick={() => onClick9()}>image</button>
             </div>
         </div>
     );

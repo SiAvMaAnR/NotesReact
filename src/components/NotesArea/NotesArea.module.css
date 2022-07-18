@@ -1,0 +1,33 @@
+.page {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    scroll-behavior: smooth;
+}
+
+.notes {
+    min-width: 600px;
+    background: #1e1e1e;
+    flex: 1 1;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.notes > .header {
+    height: 70px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    flex: 0 1 80px;
+}
+
+.notes > .content {
+    flex: 1 1;
+}
+
+.note-func {
+    background: #303030;
+    flex: 0 0 400px;
+    border: #3e3e3e solid 1.5px;
+}

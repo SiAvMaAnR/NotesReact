@@ -1,13 +1,26 @@
-import React, { useState, useEffect, useMemo, useRef, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { accountApi, tasksApi } from "../../api/index";
+import { accountApi } from "../../api/index";
 import Input from "../../components/UI/Input/Input";
-import { AuthContext, TokenContext } from "../../App";
+import { AuthContext } from "../../App";
 import styles from "../Login/Login.module.css";
 import Button from "../../components/UI/Button/Button";
 
+const validateEmail = (email) => {
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (!email.length) return "enter email";
+    if (!reg.test(email)) return "email is incorrect";
+    return "";
+};
+
+const validatePassword = (password) => {
+    if (!password.length) return "enter password";
+    if (password.length < 6 || password.length > 30)
+        return "password length 5-10 characters";
+    return "";
+};
+
 const Login = (props) => {
-    const [token, setToken] = useContext(TokenContext);
     const [isLogged, login, logout] = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -19,7 +32,7 @@ const Login = (props) => {
     const [commonError, setCommonError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const loginHandler = async () => {
+    const loginHandler = useCallback(async () => {
         if (!emailError && !passwordError) {
             setLoading(true);
             const response = await accountApi.login({
@@ -34,47 +47,30 @@ const Login = (props) => {
                 setLoading(false);
             }
         }
-    };
+    }, [email, emailError, password, passwordError, login]);
 
-    const registerHandler = () => {
+    const registerHandler = useCallback(() => {
         navigate("/register");
-    };
+    }, [navigate]);
 
-    const validateEmail = (email) => {
-        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if (!email.length) return "enter email";
-        if (!reg.test(email)) return "email is incorrect";
-        return "";
-    };
-
-    const validatePassword = (password) => {
-        if (!password.length) return "enter password";
-        if (password.length < 6 || password.length > 30)
-            return "password length 5-10 characters";
-        return "";
-    };
-
-    const emailChangeHandler = (event) => {
+    const emailChangeHandler = useCallback((event) => {
         setEmail(event.target.value);
 
         const error = validateEmail(event.target.value);
         setEmailError(error);
-    };
+    }, []);
 
-    const passwordChangeHandler = (event) => {
+    const passwordChangeHandler = useCallback((event) => {
         setPassword(event.target.value);
 
         const error = validatePassword(event.target.value);
         setPasswordError(error);
-    };
+    }, []);
 
     return (
         <div className={styles["page"]}>
             <div className={styles["authorize"]}>
-                <div className={styles["header"]}>
-                    To-Do
-                </div>
-
+                <div className={styles["header"]}>To-Do</div>
 
                 <div className={styles["common-error"]}>
                     <div className={styles["common-error-text"]}>
@@ -87,7 +83,7 @@ const Login = (props) => {
                     <Input
                         className={styles["input"]}
                         placeholder="email"
-                        onChange={(e) => emailChangeHandler(e)}
+                        onChange={emailChangeHandler}
                         value={email}
                         type="text"
                     />
@@ -98,7 +94,7 @@ const Login = (props) => {
                     <Input
                         className={styles["input"]}
                         placeholder="password"
-                        onChange={(e) => passwordChangeHandler(e)}
+                        onChange={passwordChangeHandler}
                         value={password}
                         type="password"
                     />
@@ -107,7 +103,7 @@ const Login = (props) => {
                 <div className={styles["btn-login-container"]}>
                     <Button
                         className={styles["btn-login"]}
-                        onClick={() => loginHandler()}
+                        onClick={loginHandler}
                     >
                         {loading ? (
                             <i className="bx bx-loader-alt"></i>
@@ -120,7 +116,7 @@ const Login = (props) => {
                 <div className={styles["btn-register-container"]}>
                     <Button
                         className={styles["btn-register"]}
-                        onClick={() => registerHandler()}
+                        onClick={registerHandler}
                     >
                         Create new account
                     </Button>

@@ -1,14 +1,15 @@
-import React from "react";
+import React, {memo} from "react";
 import styles from "../Button/Button.module.css";
 import PropTypes from "prop-types";
 
 const Button = ({ style, className, onClick, children }) => {
+    console.log("BUTTON")
     return (
         <div className={styles["container"]}>
             <button
                 className={className}
                 style={style}
-                onClick={() => onClick()}
+                onClick={onClick}
             >
                 {children}
             </button>
@@ -25,4 +26,4 @@ Button.defautProps = {
     children: "Click",
 };
 
-export default Button;
+export default memo(Button);

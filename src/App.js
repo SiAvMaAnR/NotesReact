@@ -15,7 +15,7 @@ function App() {
   const [isLogged, login, logout] = useAuth([token, setToken]);
   const [user] = useUser([token, isLogged, logout]);
 
-  const isEmptyUser = () => {
+  const isEmptyObject = (user) => {
     return Object.keys(user).length === 0;
   }
 
@@ -27,13 +27,13 @@ function App() {
             <div>
               {(isLogged) ?
                 <Sidebar
-                  login={!isEmptyUser() ? user['login'] : ''}
-                  role={!isEmptyUser() ? user['role'] : ''}
+                  login={!isEmptyObject(user) ? user['login'] : ''}
+                  role={!isEmptyObject(user) ? user['role'] : ''}
                   isLogged={isLogged}>
 
                   <Routes>
                     <Route path="/Home" element={<Home />} />
-                    <Route exact path="/Notes" element={<AllNotes/>} />
+                    <Route exact path="/Notes" element={<AllNotes />} />
                     <Route exact path="/Notes/Favorite" element={<FavoriteNotes />} />
                     <Route exact path="/Test" element={<Test />} />
                     <Route path="/*" element={<AllNotes />} />

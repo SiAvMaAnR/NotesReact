@@ -1,5 +1,5 @@
-import { tasksApi } from "./tasksApi";
+import { notesApi } from "./notesApi";
 import { accountApi } from "./accountApi";
 
 
-export { tasksApi, accountApi };
+export { notesApi, accountApi };

@@ -1,12 +1,13 @@
 import axios from "axios";
 
-export const tasksApi = {
-  addTask: async (params) => {
+export const notesApi = {
+  addNote: async (params) => {
     const body = {
       title: params['title'],
       description: params['description'],
       eventDate: params['eventDate'],
-      isDone: params['isDone']
+      isDone: params['isDone'],
+      isFavorite: params['isFavorite']
     }
 
     const config = {
@@ -22,7 +23,7 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  getAllTasks: async (params) => {
+  getAllNotes: async (params) => {
     const config = {
       headers: {
         'accept': '*/*',
@@ -35,7 +36,7 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  getFavoriteTasks: async (params) => {
+  getFavoriteNotes: async (params) => {
     const config = {
       headers: {
         'accept': '*/*',
@@ -48,11 +49,11 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  getTask: async (params) => {
+  getNote: async (params) => {
 
   },
 
-  deleteTask: async (params) => {
+  deleteNote: async (params) => {
     const config = {
       headers: {
         'accept': '*/*',
@@ -67,7 +68,7 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  setIsDonedTask: async (params) => {
+  setIsDonedNote: async (params) => {
     const body = {
       id: params['id'],
       isDone: params['isDone']
@@ -86,7 +87,7 @@ export const tasksApi = {
       .catch(error => null)
   },
 
-  setIsFavoriteTask: async (params) => {
+  setIsFavoriteNote: async (params) => {
     const body = {
       id: params['id'],
       isFavorite: params['isFavorite']
